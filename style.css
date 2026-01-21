@@ -4,32 +4,49 @@
    VARIABELEN
    ========================= */
 :root {
+    /* --- JOUW SIDEBAR (Blijft Donkerblauw) --- */
     --sidebar-bg: #1e293b;
     --sidebar-text: #f8fafc;
-    --main-bg: #f1f5f9;
-    --card-bg: #ffffff;
+    
+    /* --- ACHTERGROND (Blijft Wit) --- */
+    --main-bg: #ffffff;
+    
+    /* --- DE KAARTEN (Nu zacht geel/vanille) --- */
+    --card-bg: #fffbeb;  /* Heel licht warm geel */
+    
+    /* --- TEKST & KOPJES --- */
     --text-color: #334155;
     --heading-color: #0f172a;
-    --accent: #3b82f6; 
+    
+    /* --- ACCENT KLEUR (De 'Deur' geel uit je CV) --- */
+    /* We gebruiken een donkere goud/amber tint voor leesbaarheid */
+    --accent: #d97706;   
+    
     --line-color: #cbd5e1;
     --border: 1px solid var(--line-color);
     
-    /* NIEUW: De kleur van de kaart als hij opengeklapt is */
-    --active-card-bg: #eff6ff; /* Heel licht blauw (voor light mode) */
+    /* --- ACTIVE CARD (Als hij openklapt) --- */
+    /* Een iets diepere geel om te laten zien dat hij actief is */
+    --active-card-bg: #fef3c7; 
 }
 
 [data-theme="dark"] {
     --sidebar-bg: #0f172a; 
     --main-bg: #020617;    
-    --card-bg: #1e293b;    
+    
+    /* In Dark Mode maken we de kaarten niet fel geel (dat doet pijn aan je ogen).
+       We maken ze donkerbruin/grijs met GOUDEN accenten. */
+    --card-bg: #2a2010; /* Heel donker bruin/warm grijs */   
+    
     --text-color: #cbd5e1;
     --heading-color: #f8fafc;
-    --line-color: #334155;
+    
+    --line-color: #451a03;
     --border: 1px solid var(--line-color);
     
-    /* NIEUW: De kleur van de kaart als hij opengeklapt is (Dark mode) */
-    /* Iets lichter dan de normale kaartkleur */
-    --active-card-bg: #2a3649; 
+    /* Accent Goud in dark mode */
+    --accent: #fbbf24;           
+    --active-card-bg: #451a03; 
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -372,3 +389,4 @@ footer { border-top: var(--border); padding-top: 20px; color: var(--text-color);
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
