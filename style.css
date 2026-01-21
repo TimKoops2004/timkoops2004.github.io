@@ -1,51 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* =========================
-   VARIABELEN & THEMA'S
+   1. VARIABELEN & THEMA'S
    ========================= */
 :root {
-    /* --- SIDEBAR KLEUREN --- */
-    --sidebar-bg: #05293d;   /* Jouw Diepblauw */
-    --sidebar-text: #FFFFFF; /* Wit */
+    /* --- Sidebar & Navigatie --- */
+    --sidebar-bg: #05293d;   
+    --sidebar-text: #FFFFFF; 
     
-    /* --- HOOFD KLEUREN --- */
-    --main-bg: #FFFFFF;      /* Witte achtergrond */
+    /* --- Hoofdkleuren --- */
+    --main-bg: #FFFFFF;      
     
-    /* --- KAARTEN (TEKSTBALK) --- */
-    --card-bg: #ffe29b;      /* Jouw Zachtgeel */
-    --active-card-bg: #ffe29b; /* Blijft geel bij openklappen */
+    /* --- Kaarten & Elementen --- */
+    --card-bg: #ffe29b;      
+    --active-card-bg: #ffe29b; 
     
-    /* --- TYPOGRAFIE --- */
-    --heading-color: #05293d; /* Algemene tekst/koppen: Diepblauw */
-    --text-color: #292d2d;    /* Tekst IN de balk: Donkergrijs/Zwart */
+    /* --- Typografie --- */
+    --heading-color: #05293d; 
+    --text-color: #292d2d;    
     
-    /* --- ACCENTEN (Sidebar & Tijdlijn) --- */
-    --accent: #ffe29b;       /* Accent: Geel */
+    /* --- Accenten --- */
+    --accent: #ffe29b;       
     
-    /* --- LIJNEN --- */
+    /* --- Lijnen & Randen --- */
     --line-color: #cbd5e1;
-    --border: 1px solid rgba(0,0,0,0.1); /* Subtiele rand */
+    --border: 1px solid rgba(0,0,0,0.1); 
 }
 
 [data-theme="dark"] {
-    /* --- DARK MODE (Automatische omzetting) --- */
-    --sidebar-bg: #021a26;   /* Iets donkerder dan light mode */
-    --main-bg: #020617;      /* Zeer donkerblauw/zwart */
+    /* --- Dark Mode Override --- */
+    --sidebar-bg: #021a26; 
+    --main-bg: #020617;    
     
-    --card-bg: #05293d;      /* Kaarten worden nu jouw Diepblauw */
+    --card-bg: #05293d;    
     --active-card-bg: #05293d; 
     
-    --text-color: #cbd5e1;   /* Lichte tekst */
-    --heading-color: #ffe29b; /* Koppen worden geel voor contrast */
-    
-    --accent: #ffe29b;       /* Accent blijft geel */
+    --text-color: #cbd5e1;
+    --heading-color: #ffe29b; 
+    --accent: #ffe29b;     
     
     --line-color: #1e293b;
     --border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* =========================
-   ALGEMENE STIJLEN
+   2. ALGEMENE STIJLEN
    ========================= */
 * { 
     box-sizing: border-box; 
@@ -56,7 +55,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--main-bg);
-    color: var(--heading-color); /* Algemene tekst kleur */
+    color: var(--heading-color);
     display: flex; 
     min-height: 100vh;
 }
@@ -72,14 +71,13 @@ h2 {
     gap: 15px; 
 }
 
-/* Icoontje naast H2 (Over mij, Werkervaring) gebruikt algemene tekstkleur voor rust */
 h2 i { 
     color: var(--heading-color); 
     font-size: 1.5rem; 
 }
 
 /* =========================
-   SIDEBAR (LINKS)
+   3. SIDEBAR (LINKS)
    ========================= */
 .sidebar {
     width: 320px;
@@ -92,20 +90,28 @@ h2 i {
     
     display: flex;
     flex-direction: column;
-    
-    /* AANPASSING 1: Was 'center'. Nu 'flex-start' (alles naar boven). */
-    justify-content: flex-start; 
-    
-    /* AANPASSING 2: Padding bovenkant iets ruimer (80px), zijkanten 40px. */
+    justify-content: flex-start; /* Uitlijning naar boven */
     padding: 30px 40px 40px 40px;
     
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     z-index: 10;
 }
 
+/* --- Profielfoto --- */
+.profile-img {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent); 
+    display: block;
+    margin: 0 auto 20px auto; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.profile-header { text-align: center; }
 .profile-header h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 5px; color: #fff; }
 
-/* Rol en Accenten in Sidebar gebruiken de GELE accentkleur */
 .role { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; }
 .tagline { font-size: 0.9rem; opacity: 0.8; margin-bottom: 40px; font-style: italic; }
 
@@ -120,30 +126,8 @@ h2 i {
 
 .theme-switch-wrapper { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; opacity: 0.7; }
 
-/* --- PROFIELFOTO --- */
-.profile-img {
-    width: 185px;           /* Grootte van de foto */
-    height: 185px;          /* Even groot als breedte voor een cirkel */
-    border-radius: 50%;     /* Maakt hem perfect rond */
-    object-fit: cover;      /* Zorgt dat de foto niet uitrekt als hij niet vierkant is */
-    
-    /* Randje in jouw accentkleur (#ffe29b) */
-    border: 4px solid var(--accent); 
-    
-    /* Centreren en ruimte aan de onderkant */
-    display: block;
-    margin: 0 auto 20px auto; 
-    
-    /* Mooie schaduw voor diepte */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.profile-header {
-    text-align: center;
-}
-
 /* =========================
-   MAIN CONTENT (RECHTS)
+   4. MAIN CONTENT (RECHTS)
    ========================= */
 .main-content {
     margin-left: 320px; 
@@ -151,10 +135,7 @@ h2 i {
     padding: 60px 80px 30px 55px;
 }
 
-/* Algemene paragraaf tekst (buiten kaarten) */
-.main-content > section > p {
-    color: var(--heading-color);
-}
+.main-content > section > p { color: var(--heading-color); }
 
 footer { 
     border-top: var(--border); 
@@ -165,11 +146,9 @@ footer {
 }
 
 /* =========================
-   TIJDLIJN STUCTUUR
+   5. TIJDLIJN STRUCTUUR
    ========================= */
-.split-timeline { 
-    position: relative; 
-}
+.split-timeline { position: relative; }
 
 /* Verticale lijn */
 .split-timeline::before {
@@ -198,10 +177,9 @@ footer {
     padding-right: 25px; 
     padding-top: 15px;
     position: relative;
-    border-right: none; 
 }
 
-/* Bolletjes op de tijdlijn (GEEL) */
+/* Bolletjes */
 .timeline-time::after {
     content: '';
     position: absolute;
@@ -210,15 +188,14 @@ footer {
     top: 16px;
     width: 12px;
     height: 12px;
-    background-color: var(--accent); /* Dit is geel */
+    background-color: var(--accent);
     border: 3px solid var(--main-bg); 
     border-radius: 50%;
     z-index: 2; 
 }
 
-/* Highlight eerste bolletje */
 .timeline-row:first-child .timeline-time::after {
-    box-shadow: 0 0 0 3px var(--main-bg), 0 0 0 5px var(--accent);
+    box-shadow: 0 0 0 2.2px var(--main-bg), 0 0 0 5px var(--accent);
 }
 
 .date-badge { 
@@ -228,7 +205,6 @@ footer {
     display: block; 
 }
 
-/* Rechter kolom (Content) */
 .timeline-content { 
     flex: 1; 
     padding-left: 33px; 
@@ -236,10 +212,10 @@ footer {
 }
 
 /* =========================
-   INTERACTIEVE KAARTEN (TEKSTBALK)
+   6. INTERACTIEVE KAARTEN
    ========================= */
 .job-card {
-    background: var(--card-bg); /* GEEL */
+    background: var(--card-bg);
     border: var(--border);
     padding: 15px 25px 20px 25px; 
     border-radius: 10px;
@@ -249,7 +225,7 @@ footer {
     z-index: 1; 
 }
 
-/* --- Driehoekje: Rand (Links) --- */
+/* --- Driehoekje (Links - Rand) --- */
 .job-card::before {
     content: ''; 
     position: absolute; 
@@ -257,16 +233,13 @@ footer {
     left: -10px; 
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
-    
-    /* AANPASSING: Geen doorzichtige kleur meer, maar een vaste donkergele kleur (#e5cb8b).
-       Dit matcht precies met de rand van je gele kaart. */
+    /* Hardcoded donkergeel om te matchen met de rand */
     border-right: 10px solid #e5cb8b; 
-    
     transition: border-right-color 0.2s;
     z-index: 2; 
 }
 
-/* --- Driehoekje: Vulling/Masker (Rechts) --- */
+/* --- Driehoekje (Rechts - Masker) --- */
 .job-card::after {
     content: ''; 
     position: absolute;
@@ -274,47 +247,29 @@ footer {
     left: -9px; 
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
-    border-right: 10px solid var(--card-bg); /* Kleurt mee met kaart (GEEL) */
+    border-right: 10px solid var(--card-bg); 
     transition: border-right-color 0.2s;
     z-index: 3; 
 }
 
-/* --- HOVER EFFECTEN --- */
+/* --- HOVER STATES --- */
 .job-card:hover { 
     transform: translateX(5px); 
-    /* De rand van de kaart wordt donkerblauw */
     border-color: var(--heading-color); 
 }
 
-/* NIEUW: Zorg dat het driehoekje OOK donkerblauw wordt bij hover */
 .job-card:hover::before {
     border-right-color: var(--heading-color) !important;
 }
 
-/* --- ACTIVE (OPENGEKLAPT) EFFECTEN --- */
-.job-card.active {
-    border-color: var(--heading-color);
-    background-color: var(--active-card-bg); 
-}
-
-/* NIEUW: Zorg dat het driehoekje donkerblauw blijft als hij open staat */
-.job-card.active::before {
-    border-right-color: var(--heading-color) !important;
-}
-
-.job-card.active::after {
-    border-right-color: var(--active-card-bg); 
-}
-
-/* --- Active States (Opengeklapt) --- */
+/* --- ACTIVE STATES (Opengeklapt) --- */
 .job-card.active {
     border-color: var(--heading-color);
     background-color: var(--active-card-bg); 
 }
 
 .job-card.active::before {
-    /* De rand van het driehoekje wordt donkerblauw als hij open staat */
-    border-right-color: var(--heading-color); 
+    border-right-color: var(--heading-color) !important; 
 }
 
 .job-card.active::after {
@@ -328,50 +283,24 @@ footer {
     align-items: center; 
 }
 
-/* De Titel (Teamleider etc.) */
-.job-header h3 { 
-    margin: 0; 
-    font-size: 1.1rem; 
-    color: var(--heading-color); /* Diepblauw */
-}
+.job-header h3 { margin: 0; font-size: 1.1rem; color: var(--heading-color); }
+.company { color: var(--heading-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
+.toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
 
-/* Bedrijfsnaam: Let op! Deze moet donker zijn op de gele kaart */
-.company { 
-    color: var(--heading-color); /* Diepblauw (Voor contrast op geel) */
-    font-weight: 600; 
-    font-size: 0.9rem; 
-    margin-bottom: 10px; 
-}
+.job-card.active .toggle-icon { transform: rotate(180deg); }
 
-/* Pijltje: Moet ook donker zijn op de gele kaart */
-.toggle-icon { 
-    color: var(--heading-color); /* Diepblauw */
-    transition: transform 0.3s ease; 
-}
-
-.job-card.active .toggle-icon { 
-    transform: rotate(180deg); 
-}
-
-/* Details sectie (verborgen) */
+/* --- Hidden Details --- */
 .job-details {
     display: none;
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid rgba(0,0,0,0.1);
     font-size: 0.9rem;
-    
-    /* HIER IS DE SPECIFIEKE TEKSTKLEUR VOOR IN DE BALK */
-    color: var(--text-color); /* #292d2d */
-    
+    color: var(--text-color);
     opacity: 0.9;
 }
 
-.job-card.active .job-details { 
-    display: block; 
-    animation: fadeIn 0.3s ease; 
-}
-
+.job-card.active .job-details { display: block; animation: fadeIn 0.3s ease; }
 .job-details ul { padding-left: 20px; margin: 0; }
 .job-details li { margin-bottom: 5px; }
 
@@ -381,7 +310,7 @@ footer {
 }
 
 /* =========================
-   CERTIFICATEN
+   7. CERTIFICATEN
    ========================= */
 .cert-list { 
     display: grid; 
@@ -392,15 +321,25 @@ footer {
 .cert-item { 
     background: var(--card-bg); 
     border: var(--border); 
-    color: var(--heading-color); /* Tekstkleur in certificaat blokjes */
+    color: var(--heading-color); 
     padding: 15px; 
     border-radius: 8px; 
     text-align: center; 
-    font-weight: 500; 
+    font-weight: 500;
+    transition: all 0.2s ease; 
+    cursor: default; 
+}
+
+/* Pop-out effect */
+.cert-item:hover {
+    transform: scale(1.03); 
+    border-color: var(--heading-color);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 2; 
 }
 
 /* =========================
-   RESPONSIVE DESIGN (MOBIEL)
+   8. RESPONSIVE DESIGN
    ========================= */
 @media (max-width: 850px) {
     .split-timeline::before { display: none; }
