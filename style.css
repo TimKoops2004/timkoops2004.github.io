@@ -11,10 +11,11 @@
     --text-color: #334155;
     --heading-color: #0f172a;
     --accent: #3b82f6; 
-    
-    /* NIEUW: We splitsen de border en de kleur op */
-    --line-color: #cbd5e1; /* De kleur van de lijntjes */
+    --line-color: #cbd5e1;
     --border: 1px solid var(--line-color);
+    
+    /* NIEUW: De kleur van de kaart als hij opengeklapt is */
+    --active-card-bg: #eff6ff; /* Heel licht blauw (voor light mode) */
 }
 
 [data-theme="dark"] {
@@ -23,10 +24,12 @@
     --card-bg: #1e293b;    
     --text-color: #cbd5e1;
     --heading-color: #f8fafc;
-    
-    /* NIEUW: Dark mode lijnkleur */
     --line-color: #334155;
     --border: 1px solid var(--line-color);
+    
+    /* NIEUW: De kleur van de kaart als hij opengeklapt is (Dark mode) */
+    /* Iets lichter dan de normale kaartkleur */
+    --active-card-bg: #2a3649; 
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -195,29 +198,105 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 }
 
 /* =========================
-   KAARTEN & CERTIFICATEN
+   KAARTEN & CERTIFICATEN (OPTISCHE CORRECTIE)
    ========================= */
+
 .job-card {
     background: var(--card-bg);
     border: var(--border);
     padding: 20px 25px;
     border-radius: 10px;
-    transition: transform 0.2s;
+    transition: all 0.2s ease;
     position: relative;
+    cursor: pointer;
+    z-index: 1; 
 }
 
+/* --- DRIEHOEKJE 1: DE RAND (Achterkant) --- */
 .job-card::before {
-    content: ''; position: absolute; left: -10px; top: 20px;
-    border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-right: 10px solid var(--line-color); /* Aangepast naar line-color */
-}
-.job-card::after {
-    content: ''; position: absolute; left: -9px; top: 20px;
-    border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-right: 10px solid var(--card-bg);
+    content: ''; 
+    position: absolute; 
+    top: 20px;
+    
+    /* We laten deze staan op -9px */
+    left: -9px; 
+    
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid var(--line-color); 
+    
+    transition: border-right-color 0.2s;
+    z-index: 2; 
 }
 
-.job-card:hover { transform: translateX(5px); border-color: var(--accent); }
+/* --- DRIEHOEKJE 2: DE VULLING (Voorkant/Masker) --- */
+.job-card::after {
+    content: ''; 
+    position: absolute;
+    top: 20px;
+    
+    /* AANPASSING: Was -8px. Nu -8.4px. */
+    /* We schuiven het masker 0.4px dichter naar de rand toe. */
+    /* Het zichtbare randje is nu optisch dunner (0.6px ipv 1px). */
+    left: -8.4px; 
+    
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid var(--card-bg); 
+    
+    transition: border-right-color 0.2s;
+    z-index: 3; 
+}
+
+/* --- HOVER EFFECTEN --- */
+.job-card:hover { 
+    transform: translateX(5px); 
+    border-color: var(--accent); 
+}
+
+.job-card:hover::before {
+    border-right-color: var(--accent);
+}
+
+/* --- ACTIVE (OPENGEKLAPT) EFFECTEN --- */
+.job-card.active {
+    border-color: var(--accent);
+    background-color: var(--active-card-bg);
+}
+
+.job-card.active::before {
+    border-right-color: var(--accent);
+}
+
+.job-card.active::after {
+    border-right-color: var(--active-card-bg);
+}
+
+/* --- OVERIGE STIJLEN --- */
+.job-header { display: flex; justify-content: space-between; align-items: center; }
 .job-header h3 { margin: 0; font-size: 1.1rem; color: var(--heading-color); }
 .company { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
+.toggle-icon { color: var(--accent); transition: transform 0.3s ease; }
+.job-card.active .toggle-icon { transform: rotate(180deg); }
+
+.job-details {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--line-color);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.job-card.active .job-details { display: block; animation: fadeIn 0.3s ease; }
+.job-details ul { padding-left: 20px; margin: 0; }
+.job-details li { margin-bottom: 5px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* Certificaten */
 .cert-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
@@ -226,41 +305,67 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 footer { border-top: var(--border); padding-top: 20px; color: var(--text-color); opacity: 0.6; font-size: 0.9rem; }
 
 /* =========================
-   MOBIEL / TABLET
+   INTERACTIEVE KAARTEN (ACCORDION)
    ========================= */
-@media (max-width: 850px) {
-    body { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; position: relative; padding: 30px; }
-    .main-content { margin-left: 0; width: 100%; padding: 30px; }
-    
-    .timeline-row { flex-direction: column; }
-    
-    .timeline-time { 
-        text-align: left; 
-        padding-left: 20px; 
-        margin-left: 10px;
-        padding-right: 0;
-        
-        /* Op mobiel gebruiken we een simpele border links */
-        border-left: 2px solid var(--line-color); 
-        border-right: none;
-    }
 
-    /* Verberg de complexe lijn op mobiel */
-    .timeline-time::before { display: none; }
-
-    .timeline-time::after { 
-        right: auto; 
-        left: -7px; 
-    }
-    
-    .job-card::before, .job-card::after { display: none; }
+.job-card {
+    cursor: pointer; /* Laat een handje zien zodat je weet dat je kan klikken */
 }
 
-/* Slider */
-.theme-switch { position: relative; display: inline-block; width: 40px; height: 20px; }
-.theme-switch input { display: none; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
-input:checked + .slider { background-color: var(--accent); }
-input:checked + .slider:before { transform: translateX(20px); }
+/* Header aanpassing voor het pijltje */
+.job-header {
+    display: flex;
+    justify-content: space-between; /* Pijltje helemaal rechts */
+    align-items: center;
+}
+
+.toggle-icon {
+    color: var(--accent);
+    transition: transform 0.3s ease; /* Draai animatie */
+}
+
+/* De verborgen details */
+.job-details {
+    display: none; /* Standaard verborgen! */
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border); /* Lijntje erboven */
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* Lijstjes in de details mooi maken */
+.job-details ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.job-details li {
+    margin-bottom: 5px;
+}
+
+/* --- DE ACTIEVE STATUS (Als er geklikt is) --- */
+
+/* 1. Toon de tekst */
+.job-card.active .job-details {
+    display: block;
+    animation: fadeIn 0.3s ease; /* Zachtjes verschijnen */
+}
+
+/* 2. Draai het pijltje om */
+.job-card.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* 3. Geef de kaart een subtiele highlight */
+.job-card.active {
+    border-color: var(--accent);
+    background-color: rgba(59, 130, 246, 0.03); /* Heel licht blauw tintje */
+}
+
+/* Simpele animatie */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
