@@ -1,6 +1,139 @@
-<html>
-  <body>
-    <h1>Welkom op mijn site</h1>
-    <p>Mijn eerste GitHub Pages site!</p>
-  </body>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tim Koops - Student IT Expert</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Tim Koops</div>
+            
+            <div class="nav-right-container">
+                <div class="nav-links">
+                    <a href="#about">Over Mij</a>
+                    <a href="#experience">Ervaring</a>
+                    <a href="#education">Opleiding</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox" aria-label="Wissel tussen licht en donker thema">
+                        <input type="checkbox" id="checkbox" checked />
+                        <div class="slider round">
+                            <span class="icon-sun">☀</span>
+                            <span class="icon-moon">☾</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Tim Koops</h1>
+        <h2>Student IT Expert</h2>
+        <p>Enthousiaste IT-student met passie voor sociale interactie, probleemoplossing en infrastructuur.</p>
+        <a href="#contact" class="btn">Neem Contact Op</a>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Over Mij</h2>
+        <div class="timeline-item" style="border-left-color: var(--secondary-color);">
+            <p>
+                Ik ben een enthousiaste, 20-jarige jongeman met een passie voor sociale interactie en een actieve levensstijl. 
+                Bij Studentaanhuis heb ik geleerd klantgericht te werken en problemen op te lossen. 
+                Als teamleider bij Jumbo heb ik ervaring opgedaan met leidinggeven en het aansturen van een team. 
+                In mijn vrije tijd sport ik graag, spreek ik af met vrienden of ben ik fanatiek aan het gamen.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Werkervaring</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">Juli 2025 - Heden</div>
+            <div class="timeline-title">Teamleider</div>
+            <div class="timeline-company">Jumbo | Assen</div>
+            <p>Verantwoordelijk voor het aansturen van het team, planning, begeleiding en motivatie van collega's. Aanspreekpunt in de avonden.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Juli 2024 - Juli 2025</div>
+            <div class="timeline-title">ICT Medewerker Buitendienst</div>
+            <div class="timeline-company">Studentaanhuis</div>
+            <p>Onderhouden van ICT-apparatuur, back-ups maken, systemen verbeteren en klantvragen beantwoorden. Focus op geduld en technische expertise.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Feb 2024 - Juli 2024</div>
+            <div class="timeline-title">Stagiair IT</div>
+            <div class="timeline-company">Robingood | Groningen</div>
+            <p>Klantcontact, onderhoud en reparatie van computers. Actief bijgedragen aan het onderhouden van services en systemen.</p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">Sep 2022 - Feb 2023</div>
+            <div class="timeline-title">Stagiair Helpdesk</div>
+            <div class="timeline-company">Vincent van Gogh | Assen</div>
+            <p>Helpdesk medewerker met verantwoordelijkheden voor Windows Server en patchkasten.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2 class="section-title">Opleiding</h2>
+        
+        <div class="timeline-item">
+            <div class="timeline-date">2024 - Heden</div>
+            <div class="timeline-title">HBO-ICT</div>
+            <div class="timeline-company">Windesheim Zwolle</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">2021 - 2024</div>
+            <div class="timeline-title">Expert IT Systems & Devices (MBO 4)</div>
+            <div class="timeline-company">Alfa College Groningen</div>
+        </div>
+    </section>
+
+    <section id="certs">
+        <h2 class="section-title">Certificaten & Skills</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>Fortinet NSE 1, 2 & 3</h3>
+                <p>Network Security Essentials (2023)</p>
+            </div>
+            <div class="cert-card">
+                <h3>Cisco Network Essentials</h3>
+                <p>Cisco Network Academy (2022)</p>
+            </div>
+            <div class="cert-card">
+                <h3>Cisco IT Essentials</h3>
+                <p>Cisco Network Academy (2022)</p>
+            </div>
+            <div class="cert-card">
+                <h3>Talen</h3>
+                <p>Nederlands (Moedertaal)<br>Engels (Vloeiend)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Contact</h2>
+        <p>
+            📧 <a href="mailto:timkoops0308@gmail.com">timkoops0308@gmail.com</a><br>
+            📱 06 23403194<br>
+            📍 Assen
+        </p>
+        <br>
+        <p>&copy; <span id="year"></span> Tim Koops. Gemaakt op basis van CV.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
