@@ -1,323 +1,364 @@
-/* =========================================
-   1. VARIABELEN & THEMA CONFIGURATIE
-   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* Standaard (Light Mode) */
+/* =========================
+   1. VARIABELEN & THEMA'S
+   ========================= */
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --text-color: #1f2937;
-    --white: #ffffff;
+    /* --- Sidebar & Navigatie --- */
+    --sidebar-bg: #05293d;   
+    --sidebar-text: #FFFFFF; 
     
-    /* Achtergrond: Frisse lineaire gradient */
-    --bg-gradient: radial-gradient(circle at center, #dbeafe 0%, #ffffff 80%);
+    /* --- Hoofdkleuren --- */
+    --main-bg: #FFFFFF;      
     
-    /* Border variabele (standaard leeg) */
-    --card-border: none;
+    /* --- Kaarten & Elementen --- */
+    --card-bg: #ffe29b;      
+    --active-card-bg: #ffe29b; 
+    
+    /* --- Typografie --- */
+    --heading-color: #05293d; 
+    --text-color: #292d2d;    
+    
+    /* --- Accenten --- */
+    --accent: #ffe29b;       
+    
+    /* --- Lijnen & Randen --- */
+    --line-color: #cbd5e1;
+    --border: 1px solid rgba(0,0,0,0.1); 
 }
 
-/* Dark Mode Overrides */
 [data-theme="dark"] {
-    /* Achtergrond: Diepe radial gradient (Cirkel) */
-    --bg-gradient: radial-gradient(circle at center, #172554 0%, #020617 100%);
+    /* --- Dark Mode Override --- */
+    --sidebar-bg: #021a26; 
+    --main-bg: #020617;    
     
-    --text-color: #e5e7eb;
+    --card-bg: #05293d;    
+    --active-card-bg: #05293d; 
     
-    /* Semi-transparant wit voor het 'Frosted Glass' effect */
-    --white: rgba(30, 41, 59, 0.8);
+    --text-color: #cbd5e1;
+    --heading-color: #ffe29b; 
+    --accent: #ffe29b;     
     
-    /* Subtiele rand voor kaarten in het donker */
-    --card-border: 1px solid rgba(255, 255, 255, 0.1);
+    --line-color: #1e293b;
+    --border: 1px solid rgba(255,255,255,0.1);
 }
 
-/* =========================================
-   2. ALGEMENE STIJLEN (BASE)
-   ========================================= */
+/* =========================
+   2. ALGEMENE STIJLEN
+   ========================= */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-    
-    /* Achtergrond instellingen */
-    background: var(--bg-gradient);
-    background-attachment: fixed; /* Parallax effect */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--main-bg);
+    color: var(--heading-color);
+    display: flex; 
     min-height: 100vh;
 }
 
-section {
-    padding: 80px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+section { margin-bottom: 60px; }
+
+h2 { 
+    color: var(--heading-color); 
+    font-size: 1.8rem; 
+    margin-bottom: 30px; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
 }
 
-h2.section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-    color: var(--secondary-color);
-    position: relative;
+h2 i { 
+    color: var(--heading-color); 
+    font-size: 1.5rem; 
 }
 
-h2.section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-}
-
-.btn {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--secondary-color);
-}
-
-/* =========================================
-   3. HEADER & NAVIGATIE
-   ========================================= */
-
-header {
-    background-color: var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* =========================
+   3. SIDEBAR (LINKS)
+   ========================= */
+.sidebar {
+    width: 320px;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    height: 100vh;
     position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s, border 0.3s;
-}
-
-/* Specifieke fix: Header massief maken in Dark Mode */
-[data-theme="dark"] header {
-    background-color: #020617; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1rem 20px;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.nav-right-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-/* --- Theme Switcher / Slider --- */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.theme-switch {
-    display: inline-block;
-    height: 30px;
-    position: relative;
-    width: 60px;
-}
-
-.theme-switch input {
-    display: none;
-}
-
-.slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
     left: 0;
-    position: absolute;
-    right: 0;
     top: 0;
-    transition: .4s;
-    border-radius: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5px;
-    font-size: 14px;
-}
-
-.slider::before {
-    background-color: white;
-    bottom: 4px;
-    content: "";
-    height: 22px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 22px;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-input:checked + .slider {
-    background-color: var(--primary-color);
-}
-
-input:checked + .slider::before {
-    transform: translateX(30px);
-}
-
-.icon-sun { color: #f59e0b; z-index: 1; }
-.icon-moon { color: #f3f4f6; z-index: 1; }
-
-/* =========================================
-   4. SECTIES & COMPONENTEN
-   ========================================= */
-
-/* --- Hero Section --- */
-.hero {
+    
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: var(--white);
-    padding: 60px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px);
-    border: var(--card-border);
-    margin: 140px auto 60px auto;
-    max-width: 800px;
-    width: 90%;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-}
-
-.hero h2 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.hero p {
-    max-width: 600px;
-    margin-bottom: 30px;
-    color: var(--text-color);
-}
-
-/* --- Timeline & Cards (Gecombineerde Styles) --- */
-.timeline-item, .cert-card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
+    justify-content: flex-start; /* Uitlijning naar boven */
+    padding: 30px 40px 40px 40px;
     
-    /* Frosted Glass & Dark Mode Border effecten */
-    border: var(--card-border);
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 10;
 }
 
-/* Specifiek voor Timeline */
-.timeline-item {
-    border-left: 5px solid var(--primary-color);
+/* --- Profielfoto --- */
+.profile-img {
+    width: 185px;
+    height: 185px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent); 
+    display: block;
+    margin: 0 auto 20px auto; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-.timeline-date {
+.profile-header { text-align: center; }
+.profile-header h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 5px; color: #fff; }
+
+.role { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; }
+.tagline { font-size: 0.9rem; opacity: 0.8; margin-bottom: 40px; font-style: italic; }
+
+.contact-info .info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 0.9rem; }
+.contact-info i { color: var(--accent); width: 20px; }
+.contact-info a { color: inherit; text-decoration: none; }
+
+.skills-section { margin-top: 40px; }
+.skills-section h3 { font-size: 1rem; margin-bottom: 15px; color: #fff; border-bottom: 2px solid var(--accent); display: inline-block; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tags span { background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; }
+
+.theme-switch-wrapper { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; opacity: 0.7; }
+
+/* =========================
+   4. MAIN CONTENT (RECHTS)
+   ========================= */
+.main-content {
+    margin-left: 320px; 
+    width: calc(100% - 320px);
+    padding: 60px 80px 30px 55px;
+}
+
+.main-content > section > p { color: var(--heading-color); }
+
+footer { 
+    border-top: var(--border); 
+    padding-top: 20px; 
+    color: var(--heading-color); 
+    opacity: 0.6; 
+    font-size: 0.9rem; 
+}
+
+/* =========================
+   5. TIJDLIJN STRUCTUUR
+   ========================= */
+.split-timeline { position: relative; }
+
+/* Verticale lijn */
+.split-timeline::before {
+    content: '';
+    position: absolute;
+    left: 175px; 
+    transform: translateX(-50%);
+    top: 28px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--line-color) 80%, transparent 100%);
+    z-index: 0;
+}
+
+.timeline-row { 
+    display: flex; 
+    gap: 0; 
+    position: relative; 
+}
+
+/* Linker kolom (Datum) */
+.timeline-time {
+    flex: 0 0 175px; 
+    text-align: left; 
+    white-space: nowrap; 
+    padding-right: 25px; 
+    padding-top: 15px;
+    position: relative;
+}
+
+/* Bolletjes */
+.timeline-time::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    transform: translateX(50%);
+    top: 16px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent);
+    border: 3px solid var(--main-bg); 
+    border-radius: 50%;
+    z-index: 2; 
+}
+
+.timeline-row:first-child .timeline-time::after {
+    box-shadow: 0 0 0 2.2px var(--main-bg), 0 0 0 5px var(--accent);
+}
+
+.date-badge { 
+    font-weight: 600; 
+    color: var(--heading-color); 
+    font-size: 0.9rem; 
+    display: block; 
+}
+
+.timeline-content { 
+    flex: 1; 
+    padding-left: 33px; 
+    padding-bottom: 20px; 
+}
+
+/* =========================
+   6. INTERACTIEVE KAARTEN
+   ========================= */
+.job-card {
+    background: var(--card-bg);
+    border: var(--border);
+    padding: 15px 25px 20px 25px; 
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+    z-index: 1; 
+}
+
+/* --- Driehoekje (Links - Rand) --- */
+.job-card::before {
+    content: ''; 
+    position: absolute; 
+    top: 12px;
+    left: -10px; 
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    /* Hardcoded donkergeel om te matchen met de rand */
+    border-right: 10px solid #e5cb8b; 
+    transition: border-right-color 0.2s;
+    z-index: 2; 
+}
+
+/* --- Driehoekje (Rechts - Masker) --- */
+.job-card::after {
+    content: ''; 
+    position: absolute;
+    top: 12px;
+    left: -9px; 
+    border-top: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    border-right: 10px solid var(--card-bg); 
+    transition: border-right-color 0.2s;
+    z-index: 3; 
+}
+
+/* --- HOVER STATES --- */
+.job-card:hover { 
+    transform: translateX(5px); 
+    border-color: var(--heading-color); 
+}
+
+.job-card:hover::before {
+    border-right-color: var(--heading-color) !important;
+}
+
+/* --- ACTIVE STATES (Opengeklapt) --- */
+.job-card.active {
+    border-color: var(--heading-color);
+    background-color: var(--active-card-bg); 
+}
+
+.job-card.active::before {
+    border-right-color: var(--heading-color) !important; 
+}
+
+.job-card.active::after {
+    border-right-color: var(--active-card-bg); 
+}
+
+/* --- Card Content --- */
+.job-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.job-header h3 { margin: 0; font-size: 1.1rem; color: var(--heading-color); }
+.company { color: var(--heading-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
+.toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
+
+.job-card.active .toggle-icon { transform: rotate(180deg); }
+
+/* --- Hidden Details --- */
+.job-details {
+    display: none;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.1);
     font-size: 0.9rem;
-    color: #6b7280;
-    font-weight: bold;
-    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
-.timeline-title {
-    font-size: 1.2rem;
-    margin: 5px 0;
-    font-weight: bold;
+.job-card.active .job-details { display: block; animation: fadeIn 0.3s ease; }
+.job-details ul { padding-left: 20px; margin: 0; }
+.job-details li { margin-bottom: 5px; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.timeline-company {
-    font-style: italic;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+/* =========================
+   7. CERTIFICATEN
+   ========================= */
+.cert-list { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px; 
 }
 
-/* Specifiek voor Certificaten Grid */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+.cert-item { 
+    background: var(--card-bg); 
+    border: var(--border); 
+    color: var(--heading-color); 
+    padding: 15px; 
+    border-radius: 8px; 
+    text-align: center; 
+    font-weight: 500;
+    transition: all 0.2s ease; 
+    cursor: default; 
 }
 
-.cert-card {
-    text-align: center;
+/* Pop-out effect */
+.cert-item:hover {
+    transform: scale(1.03); 
+    border-color: var(--heading-color);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 2; 
 }
 
-.cert-card h3 {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-}
+/* =========================
+   8. RESPONSIVE DESIGN
+   ========================= */
+@media (max-width: 850px) {
+    .split-timeline::before { display: none; }
+    
+    .timeline-row { flex-direction: column; }
+    
+    .timeline-time { 
+        text-align: left; 
+        padding-left: 20px; 
+        padding-right: 0;
+        margin-left: 10px;
+        flex: auto; 
+        white-space: normal; 
+        border-left: 2px solid var(--line-color); 
+    }
 
-/* Hover Effect voor alle kaarten */
-.timeline-item:hover, .cert-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* =========================================
-   5. FOOTER
-   ========================================= */
-
-footer {
-    background-color: var(--text-color);
-    color: var(--white); /* Let op: dit gebruikt nu de semi-transparante white in dark mode, wat cool kan zijn */
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
-
-/* =========================================
-   6. MEDIA QUERIES (RESPONSIVE)
-   ========================================= */
-
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .nav-links { display: none; }
-    .nav-right-container { display: none; } 
+    .timeline-time::after { 
+        right: auto; 
+        left: 0; 
+        transform: translateX(-50%); 
+    }
 }
