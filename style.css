@@ -10,7 +10,7 @@
     --white: #ffffff;
     
     /* Achtergrond: Frisse lineaire gradient */
-    --bg-gradient: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    --bg-gradient: radial-gradient(circle at center, #dbeafe 0%, #ffffff 80%);
     
     /* Border variabele (standaard leeg) */
     --card-border: none;
