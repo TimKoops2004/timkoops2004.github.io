@@ -279,10 +279,31 @@ footer {
     z-index: 3; 
 }
 
-/* --- Hover States --- */
+/* --- HOVER EFFECTEN --- */
 .job-card:hover { 
     transform: translateX(5px); 
-    border-color: var(--heading-color); /* Donkerblauw randje bij hover */
+    /* De rand van de kaart wordt donkerblauw */
+    border-color: var(--heading-color); 
+}
+
+/* NIEUW: Zorg dat het driehoekje OOK donkerblauw wordt bij hover */
+.job-card:hover::before {
+    border-right-color: var(--heading-color) !important;
+}
+
+/* --- ACTIVE (OPENGEKLAPT) EFFECTEN --- */
+.job-card.active {
+    border-color: var(--heading-color);
+    background-color: var(--active-card-bg); 
+}
+
+/* NIEUW: Zorg dat het driehoekje donkerblauw blijft als hij open staat */
+.job-card.active::before {
+    border-right-color: var(--heading-color) !important;
+}
+
+.job-card.active::after {
+    border-right-color: var(--active-card-bg); 
 }
 
 /* --- Active States (Opengeklapt) --- */
