@@ -1,323 +1,196 @@
 /* =========================================
-   1. VARIABELEN & THEMA CONFIGURATIE
+   1. SETUP & VARIABELEN
    ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-/* Standaard (Light Mode) */
 :root {
-    --primary-color: #2563eb;
-    --secondary-color: #1e40af;
-    --text-color: #1f2937;
-    --white: #ffffff;
-    
-    /* Achtergrond: Frisse lineaire gradient */
-    --bg-gradient: radial-gradient(circle at center, #dbeafe 0%, #ffffff 80%);
-    
-    /* Border variabele (standaard leeg) */
-    --card-border: none;
+    /* Kleuren Light Mode (Standaard Bento look is vaak Clean White/Gray) */
+    --bg-color: #f3f4f6;
+    --card-bg: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --primary: #2563eb;
+    --border: transparent;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
 
-/* Dark Mode Overrides */
 [data-theme="dark"] {
-    /* Achtergrond: Diepe radial gradient (Cirkel) */
-    --bg-gradient: radial-gradient(circle at center, #172554 0%, #020617 100%);
-    
-    --text-color: #e5e7eb;
-    
-    /* Semi-transparant wit voor het 'Frosted Glass' effect */
-    --white: rgba(30, 41, 59, 0.8);
-    
-    /* Subtiele rand voor kaarten in het donker */
-    --card-border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Kleuren Dark Mode (De "IamKenii" look) */
+    --bg-color: #0a0a0a;        /* Bijna zwart achtergrond */
+    --card-bg: #171717;         /* Donkergrijs voor kaarten */
+    --text-main: #ededed;
+    --text-muted: #a1a1aa;
+    --primary: #3b82f6;
+    --border: 1px solid #262626; /* Subtiele rand */
+    --shadow: none;
 }
 
 /* =========================================
-   2. ALGEMENE STIJLEN (BASE)
+   2. GLOBAL STYLES
    ========================================= */
+* { box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    font-family: 'Inter', sans-serif; /* Strakke moderne font */
+    background-color: var(--bg-color);
+    color: var(--text-main);
     margin: 0;
     padding: 0;
-    color: var(--text-color);
-    
-    /* Achtergrond instellingen */
-    background: var(--bg-gradient);
-    background-attachment: fixed; /* Parallax effect */
-    min-height: 100vh;
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
 }
 
-section {
-    padding: 80px 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-h2.section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-    color: var(--secondary-color);
-    position: relative;
-}
-
-h2.section-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary-color);
-    margin: 10px auto 0;
-}
-
-.btn {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background-color: var(--secondary-color);
-}
-
-/* =========================================
-   3. HEADER & NAVIGATIE
-   ========================================= */
-
+/* Navigatie aanpassing voor Bento stijl */
 header {
-    background-color: var(--white);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: fixed;
-    width: 100%;
+    background: var(--card-bg);
+    border-bottom: var(--border);
+    position: sticky;
     top: 0;
-    z-index: 1000;
-    transition: background-color 0.3s, border 0.3s;
-}
-
-/* Specifieke fix: Header massief maken in Dark Mode */
-[data-theme="dark"] header {
-    background-color: #020617; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    padding: 0.8rem 0;
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 20px;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.nav-right-container {
+    padding: 0 20px;
     display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-/* --- Theme Switcher / Slider --- */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.theme-switch {
-    display: inline-block;
-    height: 30px;
-    position: relative;
-    width: 60px;
-}
-
-.theme-switch input {
-    display: none;
-}
-
-.slider {
-    background-color: #ccc;
-    bottom: 0;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: .4s;
-    border-radius: 34px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 0 5px;
-    font-size: 14px;
+    align-items: center;
 }
 
-.slider::before {
-    background-color: white;
-    bottom: 4px;
-    content: "";
-    height: 22px;
-    left: 4px;
-    position: absolute;
-    transition: .4s;
-    width: 22px;
-    border-radius: 50%;
-    z-index: 2;
-}
+.logo { font-weight: 700; font-size: 1.2rem; }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: 0.2s; }
+.nav-links a:hover { color: var(--primary); }
 
-input:checked + .slider {
-    background-color: var(--primary-color);
-}
-
-input:checked + .slider::before {
-    transform: translateX(30px);
-}
-
-.icon-sun { color: #f59e0b; z-index: 1; }
-.icon-moon { color: #f3f4f6; z-index: 1; }
+/* Theme Switcher */
+.nav-right-container { display: flex; gap: 15px; align-items: center; }
+.theme-switch-wrapper { display: flex; align-items: center; }
+.theme-switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+.theme-switch input { display: none; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary); }
+input:checked + .slider:before { transform: translateX(20px); }
+.icon-sun, .icon-moon { display: none; } /* Simpel houden voor bento look */
 
 /* =========================================
-   4. SECTIES & COMPONENTEN
+   3. STACK LAYOUT (Alles onder elkaar)
    ========================================= */
 
-/* --- Hero Section --- */
-.hero {
+.bento-grid {
+    display: grid;
+    /* VERANDERING: 1 kolom in plaats van 2. Alles staat nu onder elkaar. */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    /* We maken de container iets smaller zodat de regels niet te lang worden */
+    max-width: 800px; 
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* De Basis Kaart Stijl */
+.card {
+    background-color: var(--card-bg);
+    border: var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
+}
+
+/* Headers in kaarten */
+.card h3 { margin-top: 0; font-size: 1.2rem; color: var(--text-muted); margin-bottom: 20px; font-weight: 600; }
+
+/* =========================================
+   4. SPECIFIEKE BLOKKEN
+   ========================================= */
+
+/* Hero Section (Aangepast: Kleiner en compacter) */
+.hero {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(37,99,235,0) 100%);
+    border: 1px solid rgba(37,99,235,0.2);
     justify-content: center;
-    align-items: center;
     text-align: center;
-    background: var(--white);
-    padding: 60px 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    backdrop-filter: blur(5px);
-    border: var(--card-border);
-    margin: 140px auto 60px auto;
-    max-width: 800px;
-    width: 90%;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-}
-
-.hero h2 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.hero p {
-    max-width: 600px;
-    margin-bottom: 30px;
-    color: var(--text-color);
-}
-
-/* --- Timeline & Cards (Gecombineerde Styles) --- */
-.timeline-item, .cert-card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    margin-bottom: 20px;
     
-    /* Frosted Glass & Dark Mode Border effecten */
-    border: var(--card-border);
-    backdrop-filter: blur(5px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* VERANDERING: Padding flink verkleind (was 60px) */
+    padding: 60px 20px; 
 }
 
-/* Specifiek voor Timeline */
-.timeline-item {
-    border-left: 5px solid var(--primary-color);
+.hero h1 { 
+    font-size: 2rem; /* Iets kleiner lettertype */
+    margin: 0 0 5px 0; 
+    font-weight: 800; 
+    letter-spacing: -1px; 
 }
 
-.timeline-date {
-    font-size: 0.9rem;
-    color: #6b7280;
-    font-weight: bold;
-    text-transform: uppercase;
+.hero h2 { 
+    font-size: 1.1rem; 
+    color: var(--primary); 
+    margin: 0 0 15px 0; 
+    font-weight: 600; 
 }
 
-.timeline-title {
-    font-size: 1.2rem;
-    margin: 5px 0;
-    font-weight: bold;
+.hero p { 
+    max-width: 600px; 
+    margin: 0 auto 20px auto; 
+    color: var(--text-muted); 
+    font-size: 0.95rem; /* Iets kleinere tekst */
 }
 
-.timeline-company {
-    font-style: italic;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+.hero-buttons { display: flex; gap: 10px; justify-content: center; }
+.btn { background: var(--text-main); color: var(--bg-color); padding: 8px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.2s; font-size: 0.9rem; }
+.btn:hover { opacity: 0.8; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); }
+
+/* Lijstjes (Werkervaring & Opleiding) */
+.list-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(128,128,128, 0.1);
+}
+.list-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.list-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+.bold { font-weight: 600; font-size: 1rem; }
+.date { font-size: 0.8rem; color: var(--text-muted); }
+.sub-text { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Certificaten "Tags" */
+.tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.tag {
+    background: rgba(128,128,128, 0.1);
+    color: var(--text-main);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
-/* Specifiek voor Certificaten Grid */
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.cert-card {
-    text-align: center;
-}
-
-.cert-card h3 {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-}
-
-/* Hover Effect voor alle kaarten */
-.timeline-item:hover, .cert-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+/* De rechterkolom container */
+.stacked-col { display: flex; flex-direction: column; gap: 20px; }
 
 /* =========================================
    5. FOOTER
    ========================================= */
-
 footer {
-    background-color: var(--text-color);
-    color: var(--white); /* Let op: dit gebruikt nu de semi-transparante white in dark mode, wat cool kan zijn */
     text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-}
+footer a { color: var(--text-main); text-decoration: none; }
 
 /* =========================================
-   6. MEDIA QUERIES (RESPONSIVE)
+   6. RESPONSIVE (Mobiel)
    ========================================= */
-
 @media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr; /* Alles onder elkaar op mobiel */
+    }
     .hero h1 { font-size: 2rem; }
-    .nav-links { display: none; }
-    .nav-right-container { display: none; } 
+    .nav-links { display: none; } /* Simpele verberging menu */
 }
