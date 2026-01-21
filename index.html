@@ -3,136 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tim Koops - Student IT Expert</title>
+    <title>Tim Koops - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">Tim Koops</div>
-            
-            <div class="nav-right-container">
-                <div class="nav-links">
-                    <a href="#about">Over Mij</a>
-                    <a href="#experience">Ervaring</a>
-                    <a href="#education">Opleiding</a>
-                    <a href="#contact">Contact</a>
-                </div>
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <div class="profile-header">
+                <img src="profile.jpg" alt="Tim Koops" class="profile-img">
+                
+                <h1>Tim Koops</h1>
+                <p class="role">Student IT Expert</p>
+                <p class="tagline">Passie voor infrastructuur & interactie</p>
+            </div>
 
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox" aria-label="Wissel tussen licht en donker thema">
-                        <input type="checkbox" id="checkbox" checked />
-                        <div class="slider round">
-                            <span class="icon-sun">☀</span>
-                            <span class="icon-moon">☾</span>
-                        </div>
-                    </label>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:timkoops0308@gmail.com">timkoops0308@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Assen</span>
                 </div>
             </div>
-        </nav>
-    </header>
 
-    <section class="hero">
-        <h1>Tim Koops</h1>
-        <h2>Student IT Expert</h2>
-        <p>Enthousiaste IT-student met passie voor sociale interactie, probleemoplossing en infrastructuur.</p>
-        <a href="#contact" class="btn">Neem Contact Op</a>
-    </section>
+            <div class="skills-section">
+                <h3>Vaardigheden</h3>
+                <div class="skill-tags">
+                    <span>Fortinet</span>
+                    <span>Cisco</span>
+                    <span>Netwerken</span>
+                    <span>Klantcontact</span>
+                    <span>Leiderschap</span>
+                    <span>Hardware</span>
+                </div>
+            </div>
 
-    <section id="about">
-        <h2 class="section-title">Over Mij</h2>
-        <div class="timeline-item" style="border-left-color: var(--secondary-color);">
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" checked />
+                    <div class="slider round"></div>
+                </label>
+                <span class="mode-label">Dark Mode</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        
+        <section id="intro">
+            <h2>Over Mij</h2>
             <p>
-                Ik ben een enthousiaste, 20-jarige jongeman met een passie voor sociale interactie en een actieve levensstijl. 
+                Ik ben een enthousiaste, 21-jarige jongeman met een passie voor sociale interactie en een actieve levensstijl. 
                 Bij Studentaanhuis heb ik geleerd klantgericht te werken en problemen op te lossen. 
                 Als teamleider bij Jumbo heb ik ervaring opgedaan met leidinggeven en het aansturen van een team. 
                 In mijn vrije tijd sport ik graag, spreek ik af met vrienden of ben ik fanatiek aan het gamen.
             </p>
-        </div>
-    </section>
+        </section>
 
-    <section id="experience">
-        <h2 class="section-title">Werkervaring</h2>
-        
-        <div class="timeline-item">
-            <div class="timeline-date">Juli 2025 - Heden</div>
-            <div class="timeline-title">Teamleider</div>
-            <div class="timeline-company">Jumbo | Assen</div>
-            <p>Verantwoordelijk voor het aansturen van het team, planning, begeleiding en motivatie van collega's. Aanspreekpunt in de avonden.</p>
-        </div>
+        <section id="experience">
+            <h2><i class="fas fa-briefcase"></i> Werkervaring</h2>
+            
+            <div class="split-timeline">
+                
+                <div class="timeline-row">
+                    <div class="timeline-time">
+                        <span class="date-badge">Juli 2025 - Heden</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card" onclick="toggleCard(this)">
+                            <div class="job-header">
+                                <h3>Teamleider</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="company">Jumbo | Assen</div>
+                            <p>Verantwoordelijk voor het aansturen van het team, planning, begeleiding en motivatie van collega's.</p>
+                            
+                            <div class="job-details">
+                                <ul>
+                                    <li>Maken van weekplanningen en roosters.</li>
+                                    <li>Oplossen van problemen tijdens de shift.</li>
+                                    <li>Inwerken van nieuwe medewerkers.</li>
+                                    <li>Sluiten van de winkel en kassa-afhandeling.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">Juli 2024 - Juli 2025</div>
-            <div class="timeline-title">ICT Medewerker Buitendienst</div>
-            <div class="timeline-company">Studentaanhuis</div>
-            <p>Onderhouden van ICT-apparatuur, back-ups maken, systemen verbeteren en klantvragen beantwoorden. Focus op geduld en technische expertise.</p>
-        </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">
+                        <span class="date-badge">Juli 2024 - Juli 2025</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card" onclick="toggleCard(this)">
+                            <div class="job-header">
+                                <h3>ICT Medewerker</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="company">Studentaanhuis</div>
+                            <p>Technische hulp aan huis. Onderhoud van apparatuur, back-ups maken en geduldig uitleg geven.</p>
+                            
+                            <div class="job-details">
+                                <ul>
+                                    <li>Installeren van printers, wifi en smart homes.</li>
+                                    <li>Verwijderen van virussen en opschonen trage PC's.</li>
+                                    <li>Klanten op een rustige manier uitleg geven.</li>
+                                    <li>Werken met ticketsystemen.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">Feb 2024 - Juli 2024</div>
-            <div class="timeline-title">Stagiair IT</div>
-            <div class="timeline-company">Robingood | Groningen</div>
-            <p>Klantcontact, onderhoud en reparatie van computers. Actief bijgedragen aan het onderhouden van services en systemen.</p>
-        </div>
+                <div class="timeline-row">
+                    <div class="timeline-time">
+                        <span class="date-badge">Juli Feb - Juli 2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card" onclick="toggleCard(this)">
+                            <div class="job-header">
+                                <h3>Stagiair IT</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="company">Robingood</div>
+                            <p>Onderhoud en reparatie van computersystemen en direct klantcontact.</p>
+                            
+                            <div class="job-details">
+                                <p>Tijdens deze stage heb ik veel geleerd over hardware reparaties en het refurbishen van laptops voor hergebruik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="timeline-item">
-            <div class="timeline-date">Sep 2022 - Feb 2023</div>
-            <div class="timeline-title">Stagiair Helpdesk</div>
-            <div class="timeline-company">Vincent van Gogh | Assen</div>
-            <p>Helpdesk medewerker met verantwoordelijkheden voor Windows Server en patchkasten.</p>
-        </div>
-    </section>
-
-    <section id="education">
-        <h2 class="section-title">Opleiding</h2>
-        
-        <div class="timeline-item">
-            <div class="timeline-date">2024 - Heden</div>
-            <div class="timeline-title">HBO-ICT</div>
-            <div class="timeline-company">Windesheim Zwolle</div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-date">2021 - 2024</div>
-            <div class="timeline-title">Expert IT Systems & Devices (MBO 4)</div>
-            <div class="timeline-company">Alfa College Groningen</div>
-        </div>
-    </section>
-
-    <section id="certs">
-        <h2 class="section-title">Certificaten & Skills</h2>
-        <div class="cert-grid">
-            <div class="cert-card">
-                <h3>Fortinet NSE 1, 2 & 3</h3>
-                <p>Network Security Essentials (2023)</p>
             </div>
-            <div class="cert-card">
-                <h3>Cisco Network Essentials</h3>
-                <p>Cisco Network Academy (2022)</p>
-            </div>
-            <div class="cert-card">
-                <h3>Cisco IT Essentials</h3>
-                <p>Cisco Network Academy (2022)</p>
-            </div>
-            <div class="cert-card">
-                <h3>Talen</h3>
-                <p>Nederlands (Moedertaal)<br>Engels (Vloeiend)</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <footer id="contact">
-        <h2>Contact</h2>
-        <p>
-            📧 <a href="mailto:timkoops0308@gmail.com">timkoops0308@gmail.com</a><br>
-            📍 Assen
-        </p>
-        <br>
-        <p>&copy; <span id="year"></span> Tim Koops. Gemaakt op basis van CV.</p>
-    </footer>
+        <section id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Opleiding</h2>
+            
+            <div class="split-timeline">
+                
+                <div class="timeline-row">
+                    <div class="timeline-time">
+                        <span class="date-badge">2024 - Heden</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card" onclick="toggleCard(this)">
+                            <div class="job-header">
+                                <h3>HBO-ICT</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="company">Windesheim Zwolle</div>
+                            
+                            <div class="job-details">
+                                <p>Focus op Software Engineering en Infrastructuur. Momenteel bezig met de propedeuse.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-row">
+                    <div class="timeline-time">
+                        <span class="date-badge">2021 - 2024</span>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="job-card" onclick="toggleCard(this)">
+                            <div class="job-header">
+                                <h3>Expert IT Systems & Devices</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="company">Alfa College Groningen</div>
+                            <p class="small-note">Niveau 4</p>
+                            
+                            <div class="job-details">
+                                <ul>
+                                    <li>Beheer van Windows Servers.</li>
+                                    <li>Netwerkbeheer (Cisco).</li>
+                                    <li>Security basics.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="certs">
+            <h2><i class="fas fa-certificate"></i> Certificaten</h2>
+            <div class="cert-list">
+                <div class="cert-item">Fortinet NSE 1, 2 & 3</div>
+                <div class="cert-item">Cisco Network Essentials</div>
+                <div class="cert-item">Cisco IT Essentials</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; <span id="year"></span> Tim Koops</p>
+        </footer>
+    </main>
 
     <script src="script.js"></script>
-
 </body>
 </html>
