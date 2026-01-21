@@ -103,7 +103,7 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
     position: absolute;
     
     /* AANPASSING 1: De lijn verschuift mee naar rechts (was 160px, nu 200px) */
-    left: 200px;
+    left: 175px;
     
     /* Centreren op de pixel */
     transform: translateX(-50%);
@@ -125,17 +125,18 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 
 /* --- LINKERKANT (DATUM) --- */
 .timeline-time {
-    /* AANPASSING 2: De kolom breder maken (was 160px, nu 200px) */
-    flex: 0 0 200px; 
+    flex: 0 0 175px; /* De breedte blijft hetzelfde zodat de lijn klopt */
     
-    text-align: right;
-    padding-right: 30px;
+    /* AANPASSING: Tekst staat nu links uitgelijnd */
+    text-align: left; 
+    
+    /* BELANGRIJK: Dit dwingt de tekst op 1 regel (geen enters) */
+    white-space: nowrap; 
+    
+    padding-right: 25px; 
     padding-top: 15px;
     position: relative;
     border-right: none; 
-    
-    /* AANPASSING 3: Dwingen dat tekst NOOIT op een nieuwe regel komt */
-    white-space: nowrap; 
 }
 
 /* 2. DE BOLLETJES */
@@ -149,7 +150,7 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
     /* Halverwege over de rand schuiven */
     transform: translateX(50%);
     
-    top: 22px;
+    top: 16px;
     width: 12px;
     height: 12px;
     
@@ -167,7 +168,7 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 .date-badge { font-weight: 600; color: var(--heading-color); font-size: 0.9rem; display: block; }
 
 /* RECHTERKANT (CONTENT) */
-.timeline-content { flex: 1; padding-left: 30px; padding-bottom: 40px; }
+.timeline-content { flex: 1; padding-left: 33px; padding-bottom: 20px; }
 
 /* --- MOBIEL --- */
 @media (max-width: 850px) {
@@ -198,13 +199,13 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 }
 
 /* =========================
-   KAARTEN & CERTIFICATEN (OPTISCHE CORRECTIE)
+   KAARTEN & CERTIFICATEN (DRIEHOEKJE VERPLAATST)
    ========================= */
 
 .job-card {
     background: var(--card-bg);
     border: var(--border);
-    padding: 20px 25px;
+    padding: 15px 25px 20px 25px; 
     border-radius: 10px;
     transition: all 0.2s ease;
     position: relative;
@@ -216,10 +217,11 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 .job-card::before {
     content: ''; 
     position: absolute; 
-    top: 20px;
+    top: 12px;
     
-    /* We laten deze staan op -9px */
-    left: -9px; 
+    /* AANPASSING: Was -9px. Nu -12px. */
+    /* Hij schuift 3px verder naar links. */
+    left: -10px; 
     
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
@@ -233,12 +235,11 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
 .job-card::after {
     content: ''; 
     position: absolute;
-    top: 20px;
+    top: 12px;
     
-    /* AANPASSING: Was -8px. Nu -8.4px. */
-    /* We schuiven het masker 0.4px dichter naar de rand toe. */
-    /* Het zichtbare randje is nu optisch dunner (0.6px ipv 1px). */
-    left: -8.4px; 
+    /* AANPASSING: Was -8.4px. Nu -11.4px. */
+    /* Ook deze schuift 3px mee naar links. */
+    left: -9px; 
     
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
@@ -247,6 +248,8 @@ h2 i { color: var(--accent); font-size: 1.5rem; }
     transition: border-right-color 0.2s;
     z-index: 3; 
 }
+
+/* ... De rest blijft hetzelfde ... */
 
 /* --- HOVER EFFECTEN --- */
 .job-card:hover { 
