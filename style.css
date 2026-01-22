@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* =========================
-   1. VARIABELEN & THEMA'S
+   1. VARIABELEN (KLEUREN & LIJNEN)
    ========================= */
 :root {
     /* --- Sidebar & Navigatie --- */
@@ -23,24 +23,8 @@
     --accent: #ffe29b;       
     
     /* --- Lijnen & Randen --- */
-    --line-color: #cbd5e1;
+    --line-color: #cbd5e1; 
     --border: 1px solid rgba(0,0,0,0.1); 
-}
-
-[data-theme="dark"] {
-    /* --- Dark Mode Override --- */
-    --sidebar-bg: #021a26; 
-    --main-bg: #020617;    
-    
-    --card-bg: #05293d;    
-    --active-card-bg: #05293d; 
-    
-    --text-color: #cbd5e1;
-    --heading-color: #ffe29b; 
-    --accent: #ffe29b;     
-    
-    --line-color: #1e293b;
-    --border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* =========================
@@ -91,40 +75,117 @@ h2 i {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 30px 40px 40px 40px;
+    padding: 10px 30px 40px 30px; 
     
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     z-index: 10;
 }
 
-/* --- Profielfoto --- */
 .profile-img {
-    width: 185px;
-    height: 185px;
+    width: 160px; 
+    height: 160px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--accent); 
     display: block;
-    margin: 0 auto 20px auto; 
+    margin: 0 auto 15px auto; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .profile-header { text-align: center; }
-.profile-header h1 { font-size: 2rem; line-height: 1.1; margin-bottom: 5px; color: #fff; }
+.profile-header h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 5px; color: #fff; }
 
-.role { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 20px; }
-.tagline { font-size: 0.9rem; opacity: 0.8; margin-bottom: 40px; font-style: italic; }
+.role { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; }
 
-.contact-info .info-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 0.9rem; }
-.contact-info i { color: var(--accent); width: 20px; }
-.contact-info a { color: inherit; text-decoration: none; }
+.tagline { 
+    font-size: 0.85rem; 
+    opacity: 0.8; 
+    margin-bottom: 20px; 
+}
 
-.skills-section { margin-top: 40px; }
-.skills-section h3 { font-size: 1rem; margin-bottom: 15px; color: #fff; border-bottom: 2px solid var(--accent); display: inline-block; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-.skill-tags span { background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; }
+/* --- CONTACT INFO --- */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+    margin-bottom: 25px;
+}
 
-.theme-switch-wrapper { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; opacity: 0.7; }
+.contact-info .info-item {
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    font-size: 0.85rem; 
+    
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 8px 12px; 
+    border-radius: 6px; 
+    border: 1px solid transparent; 
+    transition: background 0.3s ease; 
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none; 
+}
+
+.contact-info .info-item span {
+    word-break: break-all;
+}
+
+.contact-info i { 
+    color: var(--accent); 
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+    flex-shrink: 0; 
+}
+
+a.info-item:hover {
+    background: rgba(255, 255, 255, 0.15); 
+    cursor: pointer;
+}
+
+div.info-item {
+    cursor: default;
+}
+
+
+/* --- Skills Section --- */
+.skills-section { 
+    margin-top: 10px; 
+}
+
+.skill-category {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.skills-section .skill-category:first-of-type { margin-top: 0; }
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* AANPASSING: Iets groter gemaakt */
+.skill-tags span { 
+    background: transparent; 
+    border: 1px solid rgba(255,255,255,0.3); 
+    color: #fff;
+    
+    /* Iets meer padding en groter lettertype */
+    padding: 6px 12px; 
+    font-size: 0.85rem; 
+    
+    border-radius: 15px; 
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-tags span:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
 
 /* =========================
    4. MAIN CONTENT (RECHTS)
@@ -145,29 +206,17 @@ footer {
     font-size: 0.9rem; 
 }
 
-/* --- Introductie Specifiek --- */
-#intro h2 {
-    margin-bottom: 10px;
-    margin-top: 0;
-}
-
-#intro p {
-    max-width: 880px;
-    line-height: 1.8;
-    color: var(--heading-color);
-}
-
-#intro {
-    padding-bottom: 0px; 
-    margin-bottom: 60px;
-}
+/* --- Introductie --- */
+#intro h2 { margin-bottom: 10px; margin-top: 0; }
+#intro p { max-width: 880px; line-height: 1.8; color: var(--heading-color); }
+#intro { padding-bottom: 0px; margin-bottom: 30px; }
 
 /* =========================
    5. TIJDLIJN STRUCTUUR
    ========================= */
 .split-timeline { position: relative; }
 
-/* Verticale lijn */
+/* De Verticale Grijze Lijn */
 .split-timeline::before {
     content: '';
     position: absolute;
@@ -180,13 +229,8 @@ footer {
     z-index: 0;
 }
 
-.timeline-row { 
-    display: flex; 
-    gap: 0; 
-    position: relative; 
-}
+.timeline-row { display: flex; gap: 0; position: relative; }
 
-/* Linker kolom (Datum) */
 .timeline-time {
     flex: 0 0 165px; 
     text-align: left; 
@@ -196,7 +240,7 @@ footer {
     position: relative;
 }
 
-/* Bolletjes */
+/* De Bolletjes op de lijn */
 .timeline-time::after {
     content: '';
     position: absolute;
@@ -211,7 +255,6 @@ footer {
     z-index: 2; 
 }
 
-/* Highlight eerste bolletje */
 .timeline-row:first-child .timeline-time::after {
     box-shadow: 0 0 0 2.2px var(--main-bg), 0 0 0 5px var(--accent);
 }
@@ -223,7 +266,6 @@ footer {
     display: block; 
 }
 
-/* Rechter kolom (Content Container) */
 .timeline-content { 
     flex: 1; 
     padding-left: 33px; 
@@ -245,7 +287,6 @@ footer {
     z-index: 1; 
 }
 
-/* --- Driehoekje (Links - Rand) --- */
 .job-card::before {
     content: ''; 
     position: absolute; 
@@ -258,7 +299,6 @@ footer {
     z-index: 2; 
 }
 
-/* --- Driehoekje (Rechts - Masker) --- */
 .job-card::after {
     content: ''; 
     position: absolute;
@@ -271,56 +311,29 @@ footer {
     z-index: 3; 
 }
 
-/* --- Hover States --- */
-.job-card:hover { 
-    transform: translateX(5px); 
-    border-color: var(--heading-color); 
-}
+.job-card:hover { transform: translateX(5px); border-color: var(--heading-color); }
+.job-card:hover::before { border-right-color: var(--heading-color) !important; }
 
-.job-card:hover::before {
-    border-right-color: var(--heading-color) !important;
-}
+.job-card.active { border-color: var(--heading-color); background-color: var(--active-card-bg); }
+.job-card.active::before { border-right-color: var(--heading-color) !important; }
+.job-card.active::after { border-right-color: var(--active-card-bg); }
 
-/* --- Active States (Opengeklapt) --- */
-.job-card.active {
-    border-color: var(--heading-color);
-    background-color: var(--active-card-bg); 
-}
-
-.job-card.active::before {
-    border-right-color: var(--heading-color) !important; 
-}
-
-.job-card.active::after {
-    border-right-color: var(--active-card-bg); 
-}
-
-/* --- Card Content --- */
-.job-header { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-
+.job-header { display: flex; justify-content: space-between; align-items: center; }
 .job-header h3 { margin: 0; font-size: 1.1rem; color: var(--heading-color); }
 .company { color: var(--heading-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
 
 .toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
 .job-card.active .toggle-icon { transform: rotate(180deg); }
 
-/* --- Uitklapbare Details (Met Animatie) --- */
 .job-details {
     display: block;
     overflow: hidden;
-    
-    /* Standaard status: Dicht */
     max-height: 0;
     opacity: 0;
     margin-top: 0;
     padding-top: 0;
     border-top: 1px solid transparent;
-
-    /* Directe sluit-animatie via cubic-bezier */
+    
     transition: 
         max-height 0.3s cubic-bezier(0, 1, 0, 1),
         opacity 0.3s ease,
@@ -333,14 +346,12 @@ footer {
 }
 
 .job-card.active .job-details {
-    /* Actieve status: Open */
     max-height: 500px; 
     opacity: 1;
     margin-top: 15px;
     padding-top: 15px;
     border-top-color: rgba(0,0,0,0.1);
 
-    /* Soepele open-animatie */
     transition: 
         max-height 0.3s ease-in-out,
         opacity 0.3s ease-in-out,
@@ -355,11 +366,7 @@ footer {
 /* =========================
    7. CERTIFICATEN
    ========================= */
-.cert-list { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 15px; 
-}
+.cert-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
 .cert-item { 
     background: var(--card-bg); 
@@ -371,7 +378,6 @@ footer {
     font-weight: 500;
     transition: all 0.3s ease; 
     cursor: default; 
-    
     position: relative;
     display: flex;
     justify-content: center;
@@ -379,14 +385,12 @@ footer {
     min-height: 80px; 
 }
 
-/* --- Datum Tekst (Hover) --- */
 .cert-item::after {
     content: attr(data-year);
     position: absolute;
     bottom: 8px; 
     left: 0;
     width: 100%;
-    
     font-size: 0.8rem;
     font-weight: 400;
     opacity: 0; 
@@ -403,19 +407,14 @@ footer {
     padding-bottom: 30px; 
 }
 
-.cert-item:hover::after {
-    opacity: 0.7;
-    transform: translateY(0); 
-}
+.cert-item:hover::after { opacity: 0.7; transform: translateY(0); }
 
 /* =========================
    8. RESPONSIVE DESIGN
    ========================= */
 @media (max-width: 850px) {
     .split-timeline::before { display: none; }
-    
     .timeline-row { flex-direction: column; }
-    
     .timeline-time { 
         text-align: left; 
         padding-left: 20px; 
@@ -425,14 +424,71 @@ footer {
         white-space: normal; 
         border-left: 2px solid var(--line-color); 
     }
+    .timeline-time::after { right: auto; left: 0; transform: translateX(-50%); }
+    .cert-list { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+}
 
-    .timeline-time::after { 
-        right: auto; 
-        left: 0; 
-        transform: translateX(-50%); 
+/* =========================
+   9. SCROLL ANIMATIES (KEYFRAMES MET HOVER FIX)
+   ========================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        filter: blur(2px);
+        transform: translateY(50px);
     }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
 
-    .cert-list {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+/* Standaard instellingen voor tijdlijn etc. */
+.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+/* --- DE FIX VOOR CERTIFICATEN --- */
+
+.cert-item.hidden {
+    opacity: 0;
+    /* Zet transition UIT zodat de delay niet stoort bij hoveren later */
+    transition: none; 
+}
+
+.cert-item.show {
+    /* 1. Start de invlieg-animatie */
+    animation: fadeInUp 1s ease forwards;
+    
+    /* 2. BELANGRIJK: Zet de soepele overgang weer AAN voor het hoveren */
+    transition: all 0.3s ease; 
+}
+
+/* Vertraging alleen op de animatie (invliegen), niet op de transition (hover) */
+.cert-item:nth-child(2) { animation-delay: 0.1s; }
+.cert-item:nth-child(3) { animation-delay: 0.2s; }
+.cert-item:nth-child(4) { animation-delay: 0.3s; }
+.cert-item:nth-child(5) { animation-delay: 0.4s; }
+.cert-item:nth-child(6) { animation-delay: 0.5s; }
+.cert-item:nth-child(7) { animation-delay: 0.6s; }
+
+/* Voorkeur voor verminderde beweging respecteren */
+@media (prefers-reduced-motion) {
+    .hidden, .cert-item.hidden { 
+        transition: none; 
+        animation: none; 
+        opacity: 1; 
+        transform: none; 
     }
 }
