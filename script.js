@@ -48,18 +48,15 @@ toggleSwitch.addEventListener('change', switchTheme);
    ========================================= */
 
 function toggleCard(card) {
-    // 1. Toggle de klasse 'active' op de kaart die aangeklikt is
+    // Toggle de klasse 'active' op de kaart die aangeklikt is
     card.classList.toggle('active');
     
-    // OPTIONEEL: Wil je dat de andere kaarten dichtgaan als je er eentje opent?
-    // Haal dan de commentaarstrepen (//) hieronder weg:
-    
-    /*
+
     const allCards = document.querySelectorAll('.job-card');
     allCards.forEach(item => {
         if (item !== card) {
             item.classList.remove('active');
         }
     });
-    */
+    
 }

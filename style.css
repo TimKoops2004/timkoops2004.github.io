@@ -65,7 +65,7 @@ section { margin-bottom: 60px; }
 h2 { 
     color: var(--heading-color); 
     font-size: 1.8rem; 
-    margin-bottom: 30px; 
+    margin-bottom: 20px; 
     display: flex; 
     align-items: center; 
     gap: 15px; 
@@ -90,7 +90,7 @@ h2 i {
     
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Uitlijning naar boven */
+    justify-content: flex-start;
     padding: 30px 40px 40px 40px;
     
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
@@ -145,6 +145,23 @@ footer {
     font-size: 0.9rem; 
 }
 
+/* --- Introductie Specifiek --- */
+#intro h2 {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+#intro p {
+    max-width: 880px;
+    line-height: 1.8;
+    color: var(--heading-color);
+}
+
+#intro {
+    padding-bottom: 0px; 
+    margin-bottom: 60px;
+}
+
 /* =========================
    5. TIJDLIJN STRUCTUUR
    ========================= */
@@ -154,7 +171,7 @@ footer {
 .split-timeline::before {
     content: '';
     position: absolute;
-    left: 175px; 
+    left: 165px; 
     transform: translateX(-50%);
     top: 28px;
     bottom: 0;
@@ -171,10 +188,10 @@ footer {
 
 /* Linker kolom (Datum) */
 .timeline-time {
-    flex: 0 0 175px; 
+    flex: 0 0 165px; 
     text-align: left; 
     white-space: nowrap; 
-    padding-right: 25px; 
+    padding-right: 20px; 
     padding-top: 15px;
     position: relative;
 }
@@ -194,6 +211,7 @@ footer {
     z-index: 2; 
 }
 
+/* Highlight eerste bolletje */
 .timeline-row:first-child .timeline-time::after {
     box-shadow: 0 0 0 2.2px var(--main-bg), 0 0 0 5px var(--accent);
 }
@@ -205,10 +223,12 @@ footer {
     display: block; 
 }
 
+/* Rechter kolom (Content Container) */
 .timeline-content { 
     flex: 1; 
     padding-left: 33px; 
     padding-bottom: 20px; 
+    padding-top: 2.5px;
 }
 
 /* =========================
@@ -233,7 +253,6 @@ footer {
     left: -10px; 
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
-    /* Hardcoded donkergeel om te matchen met de rand */
     border-right: 10px solid #e5cb8b; 
     transition: border-right-color 0.2s;
     z-index: 2; 
