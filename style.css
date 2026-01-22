@@ -239,7 +239,7 @@ footer {
     border: var(--border);
     padding: 15px 25px 20px 25px; 
     border-radius: 10px;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     position: relative;
     cursor: pointer;
     z-index: 1; 
@@ -254,7 +254,7 @@ footer {
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
     border-right: 10px solid #e5cb8b; 
-    transition: border-right-color 0.2s;
+    transition: border-right-color 0.3s ease;
     z-index: 2; 
 }
 
@@ -267,11 +267,11 @@ footer {
     border-top: 10px solid transparent; 
     border-bottom: 10px solid transparent; 
     border-right: 10px solid var(--card-bg); 
-    transition: border-right-color 0.2s;
+    transition: border-right-color 0.3s ease;
     z-index: 3; 
 }
 
-/* --- HOVER STATES --- */
+/* --- Hover States --- */
 .job-card:hover { 
     transform: translateX(5px); 
     border-color: var(--heading-color); 
@@ -281,7 +281,7 @@ footer {
     border-right-color: var(--heading-color) !important;
 }
 
-/* --- ACTIVE STATES (Opengeklapt) --- */
+/* --- Active States (Opengeklapt) --- */
 .job-card.active {
     border-color: var(--heading-color);
     background-color: var(--active-card-bg); 
@@ -304,36 +304,60 @@ footer {
 
 .job-header h3 { margin: 0; font-size: 1.1rem; color: var(--heading-color); }
 .company { color: var(--heading-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px; }
-.toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
 
+.toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
 .job-card.active .toggle-icon { transform: rotate(180deg); }
 
-/* --- Hidden Details --- */
+/* --- Uitklapbare Details (Met Animatie) --- */
 .job-details {
-    display: none;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    display: block;
+    overflow: hidden;
+    
+    /* Standaard status: Dicht */
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 1px solid transparent;
+
+    /* Directe sluit-animatie via cubic-bezier */
+    transition: 
+        max-height 0.3s cubic-bezier(0, 1, 0, 1),
+        opacity 0.3s ease,
+        margin-top 0.3s ease,
+        padding-top 0.3s ease,
+        border-color 0.3s ease;
+        
     font-size: 0.9rem;
     color: var(--text-color);
-    opacity: 0.9;
 }
 
-.job-card.active .job-details { display: block; animation: fadeIn 0.3s ease; }
+.job-card.active .job-details {
+    /* Actieve status: Open */
+    max-height: 500px; 
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top-color: rgba(0,0,0,0.1);
+
+    /* Soepele open-animatie */
+    transition: 
+        max-height 0.3s ease-in-out,
+        opacity 0.3s ease-in-out,
+        margin-top 0.3s ease,
+        padding-top 0.3s ease,
+        border-color 0.3s ease;
+}
+
 .job-details ul { padding-left: 20px; margin: 0; }
 .job-details li { margin-bottom: 5px; }
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 
 /* =========================
    7. CERTIFICATEN
    ========================= */
 .cert-list { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(3, 1fr); 
     gap: 15px; 
 }
 
@@ -345,16 +369,43 @@ footer {
     border-radius: 8px; 
     text-align: center; 
     font-weight: 500;
-    transition: all 0.2s ease; 
+    transition: all 0.3s ease; 
     cursor: default; 
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px; 
 }
 
-/* Pop-out effect */
+/* --- Datum Tekst (Hover) --- */
+.cert-item::after {
+    content: attr(data-year);
+    position: absolute;
+    bottom: 8px; 
+    left: 0;
+    width: 100%;
+    
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0; 
+    transform: translateY(10px); 
+    transition: all 0.3s ease;
+    color: var(--heading-color);
+}
+
 .cert-item:hover {
     transform: scale(1.03); 
     border-color: var(--heading-color);
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     z-index: 2; 
+    padding-bottom: 30px; 
+}
+
+.cert-item:hover::after {
+    opacity: 0.7;
+    transform: translateY(0); 
 }
 
 /* =========================
@@ -379,5 +430,9 @@ footer {
         right: auto; 
         left: 0; 
         transform: translateX(-50%); 
+    }
+
+    .cert-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 }
