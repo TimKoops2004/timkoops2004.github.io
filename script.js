@@ -51,7 +51,6 @@ function toggleCard(card) {
     // Toggle de klasse 'active' op de kaart die aangeklikt is
     card.classList.toggle('active');
     
-
     const allCards = document.querySelectorAll('.job-card');
     allCards.forEach(item => {
         if (item !== card) {
