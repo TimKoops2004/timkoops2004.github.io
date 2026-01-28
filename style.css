@@ -168,7 +168,7 @@ div.info-item {
 .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
 /* AANPASSING: Iets groter gemaakt */
-.skill-tags span { 
+.skill-tags > span { 
     background: transparent; 
     border: 1px solid rgba(255,255,255,0.3); 
     color: #fff;
@@ -182,7 +182,7 @@ div.info-item {
     cursor: default;
 }
 
-.skill-tags span:hover {
+.skill-tags > span:hover {
     border-color: var(--accent);
     color: var(--accent);
 }
@@ -386,7 +386,9 @@ footer {
 }
 
 .cert-item::after {
-    content: attr(data-year);
+    /* Standaard: Nederlands */
+    content: attr(data-year-nl);
+    
     position: absolute;
     bottom: 8px; 
     left: 0;
@@ -399,6 +401,11 @@ footer {
     color: var(--heading-color);
 }
 
+/* Als Engels aan staat, pak dan de Engelse tekst */
+body.english-mode .cert-item::after {
+    content: attr(data-year-en);
+}
+
 .cert-item:hover {
     transform: scale(1.03); 
     border-color: var(--heading-color);
@@ -407,6 +414,7 @@ footer {
     padding-bottom: 30px; 
 }
 
+/* Zorg ook dat de hover werkt */
 .cert-item:hover::after { opacity: 0.7; transform: translateY(0); }
 
 /* =========================
@@ -429,53 +437,38 @@ footer {
 }
 
 /* =========================
-   9. SCROLL ANIMATIES (KEYFRAMES MET HOVER FIX)
+   9. SCROLL ANIMATIES (GLOBAL FIX)
    ========================= */
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        filter: blur(2px);
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-    }
+    from { opacity: 0; filter: blur(2px); transform: translateY(50px); }
+    to   { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-/* Standaard instellingen voor tijdlijn etc. */
+/* De Basis: Onzichtbaar */
 .hidden {
     opacity: 0;
     filter: blur(2px);
     transform: translateY(50px);
-    transition: all 1s ease;
+    /* BELANGRIJK: We halen de transition weg. 
+       Dit zorgt ervoor dat als we de animatie resetten, hij direct terugspringt naar 'onsichtbaar'. */
 }
 
+/* De Actie: Invliegen */
 .show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0);
-}
-
-/* --- DE FIX VOOR CERTIFICATEN --- */
-
-.cert-item.hidden {
-    opacity: 0;
-    /* Zet transition UIT zodat de delay niet stoort bij hoveren later */
-    transition: none; 
-}
-
-.cert-item.show {
-    /* 1. Start de invlieg-animatie */
     animation: fadeInUp 1s ease forwards;
+}
+
+/* --- Certificaten Specifiek --- */
+/* Certificaten hebben ook een hover-effect nodig als ze er eenmaal zijn */
+.cert-item.show {
+    /* De animatie komt al van de .show class hierboven */
     
-    /* 2. BELANGRIJK: Zet de soepele overgang weer AAN voor het hoveren */
+    /* We zetten de transition weer AAN voor de hover */
     transition: all 0.3s ease; 
 }
 
-/* Vertraging alleen op de animatie (invliegen), niet op de transition (hover) */
+/* Behoud vertragingen */
 .cert-item:nth-child(2) { animation-delay: 0.1s; }
 .cert-item:nth-child(3) { animation-delay: 0.2s; }
 .cert-item:nth-child(4) { animation-delay: 0.3s; }
@@ -483,12 +476,78 @@ footer {
 .cert-item:nth-child(6) { animation-delay: 0.5s; }
 .cert-item:nth-child(7) { animation-delay: 0.6s; }
 
-/* Voorkeur voor verminderde beweging respecteren */
-@media (prefers-reduced-motion) {
-    .hidden, .cert-item.hidden { 
-        transition: none; 
-        animation: none; 
-        opacity: 1; 
-        transform: none; 
-    }
+/* =========================
+   10. TAAL SLIDER (AANGEPAST VOOR SKILLS SECTIE)
+   ========================= */
+
+.language-section {
+    /* GEEN border en GEEN footer-marge meer */
+    margin-top: 5px;       /* Klein beetje ruimte onder het kopje */
+    padding-top: 0;        /* Geen extra witruimte */
+    border-top: none;      /* Die streep halen we weg */
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* BELANGRIJK: Links uitlijnen (net als de tekst) */
+    gap: 12px;
+    
+    /* Zorg dat hij mooi in lijn staat met de skills erboven */
+    padding-left: 2px; 
 }
+
+/* De tekst labels (NL / EN) */
+.lang-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--sidebar-text);
+    opacity: 0.7; /* Iets subtieler */
+    transition: opacity 0.3s;
+}
+
+/* Het label van de actieve taal maken we feller, de andere vager */
+.language-section:not(:has(input:checked)) .lang-label:first-child { opacity: 1; color: #fff; } /* NL is aan */
+.language-section:has(input:checked) .lang-label:last-child { opacity: 1; color: #fff; }       /* EN is aan */
+
+
+/* --- De Switch Knop (Iets compacter en strakker) --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    /* Achtergrondkleur als hij UIT (NL) staat: Donkerder voor contrast */
+    background-color: rgba(255, 255, 255, 0.2); 
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 3px; bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Kleur als hij AAN (EN) staat: Jouw accentkleur */
+input:checked + .slider { background-color: var(--accent); }
+
+/* Schuif het bolletje naar rechts */
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* --- Wissel Mechanisme (Blijft hetzelfde) --- */
+.lang-en { display: none; }
+body.english-mode .lang-nl { display: none !important; }
+body.english-mode div.lang-en { display: block !important; }
+body.english-mode span.lang-en { display: inline !important; }

@@ -15,8 +15,13 @@
                 <img src="profile.jpg" alt="Tim Koops" class="profile-img">
                 
                 <h1>Tim Koops</h1>
+                
                 <p class="role">Student IT Expert</p>
-                <p class="tagline">Pragmatisch & Klantgericht</p>
+                
+                <div class="tagline">
+                    <span class="lang-nl">Pragmatisch & Klantgericht</span>
+                    <span class="lang-en">Pragmatic & Customer Focused</span>
+                </div>
             </div>
 
             <div class="contact-info">
@@ -42,12 +47,16 @@
 
                 <div class="info-item">
                     <i class="fas fa-car"></i>
-                    <span>Rijbewijs B</span>
+                    <span class="lang-nl">Rijbewijs B</span>
+                    <span class="lang-en">Driver's License B</span>
                 </div>
             </div>
 
             <div class="skills-section">
-                <h3 class="skill-category">Technische Skills</h3>
+                <h3 class="skill-category">
+                    <span class="lang-nl">Technische Skills</span>
+                    <span class="lang-en">Technical Skills</span>
+                </h3>
                 <div class="skill-tags">
                     <span>Cisco</span>
                     <span>Cloud</span>
@@ -60,54 +69,126 @@
 
                 <h3 class="skill-category">Soft Skills</h3>
                 <div class="skill-tags">
-                    <span>Klantgericht</span>
-                    <span>Leiderschap</span>
-                    <span>Probleemoplosser</span>
-                    <span>Sociaal</span>
-                    <span>Teamplayer</span>
+                    <span>
+                        <span class="lang-nl">Klantgericht</span>
+                        <span class="lang-en">Customer Oriented</span>
+                    </span>
+                    <span>
+                        <span class="lang-nl">Leiderschap</span>
+                        <span class="lang-en">Leadership</span>
+                    </span>
+                    <span>
+                        <span class="lang-nl">Probleemoplosser</span>
+                        <span class="lang-en">Problem Solver</span>
+                    </span>
+                    <span>
+                        <span class="lang-nl">Sociaal</span>
+                        <span class="lang-en">Social</span>
+                    </span>
+                    <span>
+                        <span class="lang-nl">Teamspeler</span>
+                        <span class="lang-en">Team Player</span>
+                    </span>
                 </div>
             </div>
             
+                <h3 class="skill-category">
+                    <span class="lang-nl">Talen</span>
+                    <span class="lang-en">Languages</span>
+                </h3>
+                <div class="language-section">
+                    <span class="lang-label">NL</span>
+                    <label class="switch">
+                        <input type="checkbox" id="language-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="lang-label">EN</span>
+                </div>
+                    
+
+
         </div>
     </aside>
 
     <main class="main-content">
         
         <section id="intro">
-            <h2 class="hidden"><i class="fas fa-user"></i> Over mij</h2>
-            <p class="hidden">
-                Ik ben een enthousiaste, <span id="age">21</span>-jarige jongeman met een passie voor sociale interactie en een actieve levensstijl. 
-                Bij Studentaanhuis heb ik geleerd klantgericht te werken en problemen op te lossen. 
-                Als teamleider bij Jumbo heb ik ervaring opgedaan met leidinggeven en het aansturen van een team. 
-                In mijn vrije tijd sport ik graag, spreek ik af met vrienden of ben ik fanatiek aan het gamen.
-            </p>
+            <h2 class="hidden">
+                <i class="fas fa-user"></i> 
+                <span class="lang-nl">Over mij</span>
+                <span class="lang-en">About Me</span>
+            </h2>
+            
+            <div class="lang-nl">
+                <p class="hidden">
+                    Ik ben een enthousiaste, <span id="age">21</span>-jarige jongeman met een passie voor sociale interactie en een actieve levensstijl. 
+                    Bij Studentaanhuis heb ik geleerd klantgericht te werken en problemen op te lossen. 
+                    Als teamleider bij Jumbo heb ik ervaring opgedaan met leidinggeven en het aansturen van een team. 
+                    In mijn vrije tijd sport ik graag, spreek ik af met vrienden of ben ik fanatiek aan het gamen.
+                </p>
+            </div>
+            
+            <div class="lang-en">
+                <p class="hidden">
+                    I am an enthusiastic, <span id="age-en">21</span>-year-old young man with a passion for social interaction and an active lifestyle. 
+                    At Studentaanhuis, I learned to work in a customer-oriented manner and solve problems. 
+                    As a team leader at Jumbo, I gained experience in leadership and managing a team. 
+                    In my free time, I enjoy sports, hanging out with friends, or avidly gaming.
+                </p>
+            </div>
         </section>
 
         <section id="experience">
-            <h2 class="hidden"><i class="fas fa-briefcase"></i> Werkervaring</h2>
+            <h2 class="hidden">
+                <i class="fas fa-briefcase"></i> 
+                <span class="lang-nl">Werkervaring</span>
+                <span class="lang-en">Experience</span>
+            </h2>
             
             <div class="split-timeline hidden">
                 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">Juli 2025 - Heden</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">Juli 2025 - Heden</span>
+                            <span class="lang-en">July 2025 - Present</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
                             <div class="job-header">
-                                <h3>Teamleider</h3>
+                                <h3>
+                                    <span class="lang-nl">Teamleider</span>
+                                    <span class="lang-en">Team Leader</span>
+                                </h3>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="company">Jumbo | Nijlandstraat 141, Assen</div>
-                            <p>Verantwoordelijk voor het aansturen van het team, planning, begeleiding en motivatie van collega's.</p>
+                            
+                            <div class="lang-nl">
+                                <p>Verantwoordelijk voor het aansturen van het team, planning, begeleiding en motivatie van collega's.</p>
+                            </div>
+                            <div class="lang-en">
+                                <p>Responsible for managing the team, planning, guidance, and motivation of colleagues.</p>
+                            </div>
                             
                             <div class="job-details">
-                                <p>
-                                    Als Teamleider ben ik verantwoordelijk voor het aansturen van het team binnen Jumbo. 
-                                    Ik zorg voor een goede planning, begeleid en motiveer collega's, en houd overzicht op de voortgang van het werk. 
-                                    Tijdens de avonden ben ik het aanspreekpunt voor het team en zorg ik dat alles soepel verloopt. 
-                                    Dankzij mijn leiderschap, verantwoordelijkheidsgevoel en focus op samenwerking lever ik een belangrijke bijdrage aan een goed draaiende winkel.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        Als Teamleider ben ik verantwoordelijk voor het aansturen van het team binnen Jumbo. 
+                                        Ik zorg voor een goede planning, begeleid en motiveer collega's, en houd overzicht op de voortgang van het werk. 
+                                        Tijdens de avonden ben ik het aanspreekpunt voor het team en zorg ik dat alles soepel verloopt. 
+                                        Dankzij mijn leiderschap, verantwoordelijkheidsgevoel en focus op samenwerking lever ik een belangrijke bijdrage aan een goed draaiende winkel.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        As a Team Leader, I am responsible for managing the team within Jumbo. 
+                                        I ensure good planning, guide and motivate colleagues, and keep an overview of work progress. 
+                                        During evenings, I am the point of contact for the team and ensure everything runs smoothly. 
+                                        Thanks to my leadership, sense of responsibility, and focus on collaboration, I make an important contribution to a well-running store.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -115,24 +196,49 @@
 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">Juli 2024 - Juli 2025</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">Juli 2024 - Juli 2025</span>
+                            <span class="lang-en">July 2024 - July 2025</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
                             <div class="job-header">
-                                <h3>ICT-Medewerker</h3>
+                                <h3>
+                                    <span class="lang-nl">ICT-Medewerker</span>
+                                    <span class="lang-en">IT Staff</span>
+                                </h3>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
-                            <div class="company">Studentaanhuis | Buitendienst</div>
-                            <p>Technische hulp aan huis, onderhoud en klantcontact.</p>
+                            <div class="company">
+                                Studentaanhuis | 
+                                <span class="lang-nl">Buitendienst</span>
+                                <span class="lang-en">Field Service</span>
+                            </div>
+                            
+                            <div class="lang-nl">
+                                <p>Technische hulp aan huis, onderhoud en klantcontact.</p>
+                            </div>
+                            <div class="lang-en">
+                                <p>Technical support at home, maintenance, and customer contact.</p>
+                            </div>
                             
                             <div class="job-details">
-                                <p>
-                                    Mijn taken omvatten het onderhouden van ICT-apparatuur bij (voornamelijk oudere) klanten, het maken van back-ups, 
-                                    het verbeteren van systemen en het beantwoorden van hun vragen. Mijn geduld, technische expertise en klantgerichte 
-                                    aanpak zorgen ervoor dat problemen efficiënt en vriendelijk worden opgelost. Hierdoor kunnen klanten met vertrouwen 
-                                    gebruik maken van hun technologie.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        Mijn taken omvatten het onderhouden van ICT-apparatuur bij (voornamelijk oudere) klanten, het maken van back-ups, 
+                                        het verbeteren van systemen en het beantwoorden van hun vragen. Mijn geduld, technische expertise en klantgerichte 
+                                        aanpak zorgen ervoor dat problemen efficiënt en vriendelijk worden opgelost. Hierdoor kunnen klanten met vertrouwen 
+                                        gebruik maken van hun technologie.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        My tasks include maintaining IT equipment for (mostly elderly) customers, creating backups, 
+                                        improving systems, and answering their questions. My patience, technical expertise, and customer-oriented 
+                                        approach ensure that problems are solved efficiently and kindly. This allows customers to use their technology with confidence.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,23 +246,44 @@
 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">Juli 2021 - Juli 2024</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">Juli 2021 - Juli 2024</span>
+                            <span class="lang-en">July 2021 - July 2024</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
                             <div class="job-header">
-                                <h3>Magazijnman</h3>
+                                <h3>
+                                    <span class="lang-nl">Magazijnman</span>
+                                    <span class="lang-en">Warehouse Worker</span>
+                                </h3>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="company">Jumbo | Nijlandstraat 141, Assen</div>
-                            <p>Veelzijdig inzetbaar voor logistieke taken, beheer van het pick-up point en kassa-ondersteuning, met een focus op service en efficiëntie.</p>
+                            
+                            <div class="lang-nl">
+                                <p>Veelzijdig inzetbaar voor logistieke taken, beheer van het pick-up point en kassa-ondersteuning, met een focus op service en efficiëntie.</p>
+                            </div>
+                            <div class="lang-en">
+                                <p>Versatile in logistical tasks, managing the pick-up point, and cashier support, with a focus on service and efficiency.</p>
+                            </div>
                             
                             <div class="job-details">
-                                <p>
-                                    Als magazijnmedewerker ben ik veelzijdig inzetbaar. 
-                                    Mijn taken omvatten het overstapelen van karren, het beheren van pick-up point, assistentie aan de kassa, onderhoud van de emballageband, gebruik van de kartonpers en het verlenen van uitstekende klantenservice. 
-                                    Mijn flexibiliteit en teamgeest dragen bij aan een efficiënte werkomgeving.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        Als magazijnmedewerker ben ik veelzijdig inzetbaar. 
+                                        Mijn taken omvatten het overstapelen van karren, het beheren van pick-up point, assistentie aan de kassa, onderhoud van de emballageband, gebruik van de kartonpers en het verlenen van uitstekende klantenservice. 
+                                        Mijn flexibiliteit en teamgeest dragen bij aan een efficiënte werkomgeving.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        As a warehouse worker, I am versatile. 
+                                        My tasks include stacking carts, managing the pick-up point, assisting at the checkout, maintaining the returnable packaging belt, using the cardboard press, and providing excellent customer service. 
+                                        My flexibility and team spirit contribute to an efficient work environment.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,30 +293,56 @@
         </section>
         
         <section id="internships">
-            <h2 class="hidden"><i class="fas fa-laptop-code"></i> Stage</h2>
+            <h2 class="hidden">
+                <i class="fas fa-laptop-code"></i> 
+                <span class="lang-nl">Stage</span>
+                <span class="lang-en">Internships</span>
+            </h2>
             
             <div class="split-timeline hidden">
                 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">Feb 2024 - Juli 2024</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">Feb 2024 - Juli 2024</span>
+                            <span class="lang-en">Feb 2024 - July 2024</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
                             <div class="job-header">
-                                <h3>ICT-medewerker</h3>
+                                <h3>
+                                    <span class="lang-nl">ICT-medewerker</span>
+                                    <span class="lang-en">IT Staff</span>
+                                </h3>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="company">Robingood | Peizerweg 165a, Groningen</div>
-                            <p>Onderhoud, reparatie en klantcontact.</p>
+                            
+                            <div class="lang-nl">
+                                <p>Onderhoud, reparatie en klantcontact.</p>
+                            </div>
+                            <div class="lang-en">
+                                <p>Maintenance, repair, and customer contact.</p>
+                            </div>
                             
                             <div class="job-details">
-                                <p>
-                                    Tijdens mijn stage bij Robingood was ik verantwoordelijk voor klantcontact en het onderhoud en reparatie van computers. 
-                                    Daarnaast heb ik actief bijgedragen aan het onderhouden van services en systemen. Deze ervaring heeft niet alleen mijn 
-                                    technische vaardigheden versterkt, maar heeft mij ook waardevolle inzichten gegeven in het beheer van IT-infrastructuur 
-                                    en het leveren van hoogwaardige klantenservice.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        Tijdens mijn stage bij Robingood was ik verantwoordelijk voor klantcontact en het onderhoud en reparatie van computers. 
+                                        Daarnaast heb ik actief bijgedragen aan het onderhouden van services en systemen. Deze ervaring heeft niet alleen mijn 
+                                        technische vaardigheden versterkt, maar heeft mij ook waardevolle inzichten gegeven in het beheer van IT-infrastructuur 
+                                        en het leveren van hoogwaardige klantenservice.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        During my internship at Robingood, I was responsible for customer contact and the maintenance and repair of computers. 
+                                        I also actively contributed to maintaining services and systems. This experience not only strengthened my 
+                                        technical skills but also gave me valuable insights into managing IT infrastructure 
+                                        and delivering high-quality customer service.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,24 +350,44 @@
 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">Sep 2021 - Jan 2022</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">Sep 2021 - Jan 2022</span>
+                            <span class="lang-en">Sep 2021 - Jan 2022</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
                             <div class="job-header">
                                 <div>
-                                    <h3>ICT-medewerker</h3>
+                                    <h3>
+                                        <span class="lang-nl">ICT-medewerker</span>
+                                        <span class="lang-en">IT Staff</span>
+                                    </h3>
                                     <div class="company">Vincent van Gogh | Salland 4, Assen</div>
-                                    <p>Helpdeskondersteuning gecombineerd met beheer van Windows Servers en patchkasten, met een focus op IT-infrastructuur.</p>
+                                    <div class="lang-nl">
+                                        <p>Helpdeskondersteuning gecombineerd met beheer van Windows Servers en patchkasten, met een focus op IT-infrastructuur.</p>
+                                    </div>
+                                    <div class="lang-en">
+                                        <p>Helpdesk support combined with management of Windows Servers and patch cabinets, with a focus on IT infrastructure.</p>
+                                    </div>
                                 </div>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="job-details">
-                                <p>
-                                    Tijdens mijn stage bij Vincent van Gogh, locatie Salland, had ik de rol van helpdesk medewerker. 
-                                    Daarnaast kreeg ik de kans om enkele verantwoordelijkheden met betrekking tot de Windows server en de patch kast op me te nemen. 
-                                    Deze ervaring heeft mijn technische vaardigheden versterkt en me waardevolle inzichten gegeven in IT-infrastructuurbeheer.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        Tijdens mijn stage bij Vincent van Gogh, locatie Salland, had ik de rol van helpdesk medewerker. 
+                                        Daarnaast kreeg ik de kans om enkele verantwoordelijkheden met betrekking tot de Windows server en de patch kast op me te nemen. 
+                                        Deze ervaring heeft mijn technische vaardigheden versterkt en me waardevolle inzichten gegeven in IT-infrastructuurbeheer.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        During my internship at Vincent van Gogh, Salland location, I held the role of helpdesk employee. 
+                                        I was also given the opportunity to take on responsibilities regarding the Windows server and patch cabinet. 
+                                        This experience strengthened my technical skills and gave me valuable insights into IT infrastructure management.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -224,13 +397,20 @@
         </section>
         
         <section id="education">
-            <h2 class="hidden"><i class="fas fa-graduation-cap"></i> Opleiding</h2>
+            <h2 class="hidden">
+                <i class="fas fa-graduation-cap"></i> 
+                <span class="lang-nl">Opleiding</span>
+                <span class="lang-en">Education</span>
+            </h2>
             
             <div class="split-timeline hidden">
                 
                 <div class="timeline-row hidden">
                     <div class="timeline-time">
-                        <span class="date-badge">2024 - Heden</span>
+                        <span class="date-badge">
+                            <span class="lang-nl">2024 - Heden</span>
+                            <span class="lang-en">2024 - Present</span>
+                        </span>
                     </div>
                     <div class="timeline-content">
                         <div class="job-card" onclick="toggleCard(this)">
@@ -239,14 +419,29 @@
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="company">Windesheim | Campus 2, Zwolle</div>
-                            <p class="small-note">HBO - Propedeuse behaald</p>
+                            
+                            <div class="lang-nl">
+                                <p class="small-note">HBO - Propedeuse behaald</p>
+                            </div>
+                            <div class="lang-en">
+                                <p class="small-note">HBO - Propaedeutic year obtained</p>
+                            </div>
                             
                             <div class="job-details">
-                                <p>
-                                    In het eerste jaar, een breed oriënterend jaar, heb ik mijn propedeuse behaald. 
-                                    Momenteel zit ik in het tweede jaar en heb ik gekozen voor de specialisatie <strong>Cloud and Security Engineering</strong>. 
-                                    Hierin verdiep ik mij in cybersecurity, cloud engineering en Cloud Security Governance.
-                                </p>
+                                <div class="lang-nl">
+                                    <p>
+                                        In het eerste jaar, een breed oriënterend jaar, heb ik mijn propedeuse behaald. 
+                                        Momenteel zit ik in het tweede jaar en heb ik gekozen voor de specialisatie <strong>Cloud and Security Engineering</strong>. 
+                                        Hierin verdiep ik mij in cybersecurity, cloud engineering en Cloud Security Governance.
+                                    </p>
+                                </div>
+                                <div class="lang-en">
+                                    <p>
+                                        In the first year, a broadly orienting year, I obtained my propaedeutic certificate. 
+                                        Currently, I am in the second year and have chosen the specialization <strong>Cloud and Security Engineering</strong>. 
+                                        Here I deepen my knowledge in cybersecurity, cloud engineering, and Cloud Security Governance.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -266,19 +461,36 @@
                             <p class="small-note">Niveau 4</p>
                             
                             <div class="job-details">
-                                <p>Gedurende deze driejarige opleiding heb ik een brede basis gelegd en veel ervaring opgedaan in diverse vakgebieden:</p>
-                                <ul>
-                                    <li>Cloud virtualisatie</li>
-                                    <li>Databases</li>
-                                    <li>Datacommunicatie</li>
-                                    <li>Ethical hacking & Security</li>
-                                    <li>Hardware & IOT</li>
-                                    <li>Linux</li>
-                                    <li>Microsoft Server</li>
-                                    <li>Netwerken</li>
-                                    <li>Programmeren & Software</li>
-                                    <li>Projecten</li>
-                                </ul>
+                                <div class="lang-nl">
+                                    <p>Gedurende deze driejarige opleiding heb ik een brede basis gelegd en veel ervaring opgedaan in diverse vakgebieden:</p>
+                                    <ul>
+                                        <li>Cloud virtualisatie</li>
+                                        <li>Databases</li>
+                                        <li>Datacommunicatie</li>
+                                        <li>Ethical hacking & Security</li>
+                                        <li>Hardware & IOT</li>
+                                        <li>Linux</li>
+                                        <li>Microsoft Server</li>
+                                        <li>Netwerken</li>
+                                        <li>Programmeren & Software</li>
+                                        <li>Projecten</li>
+                                    </ul>
+                                </div>
+                                <div class="lang-en">
+                                    <p>During this three-year education, I laid a broad foundation and gained a lot of experience in various fields:</p>
+                                    <ul>
+                                        <li>Cloud virtualization</li>
+                                        <li>Databases</li>
+                                        <li>Data communication</li>
+                                        <li>Ethical hacking & Security</li>
+                                        <li>Hardware & IoT</li>
+                                        <li>Linux</li>
+                                        <li>Microsoft Server</li>
+                                        <li>Networking</li>
+                                        <li>Programming & Software</li>
+                                        <li>Projects</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -288,14 +500,38 @@
         </section>
 
         <section id="certs">
-            <h2 class="hidden"><i class="fas fa-certificate"></i> Certificaten</h2>
+            <h2 class="hidden">
+                <i class="fas fa-certificate"></i> 
+                <span class="lang-nl">Certificaten</span>
+                <span class="lang-en">Certificates</span>
+            </h2>
             <div class="cert-list">
-                <div class="cert-item hidden" data-year="Behaald in 2025">HBO Propedeuse</div>
-                <div class="cert-item hidden" data-year="Behaald in 2023">Fortinet NSE 1, 2 & 3</div>
-                <div class="cert-item hidden" data-year="Behaald in 2022">Cisco Network Essentials</div>
-                <div class="cert-item hidden" data-year="Behaald in 2022">Cisco IT Essentials</div>
-                <div class="cert-item hidden" data-year="Behaald in 2025">BHV</div>
-                <div class="cert-item hidden" data-year="Behaald in 2025">Sociale hygiëne</div>
+                <div class="cert-item hidden" data-year-nl="Behaald in 2025" data-year-en="Obtained in 2025">
+                    <span class="lang-nl">HBO Propedeuse</span>
+                    <span class="lang-en">HBO Propaedeutic</span>
+                </div>
+                
+                <div class="cert-item hidden" data-year-nl="Behaald in 2023" data-year-en="Obtained in 2023">
+                    Fortinet NSE 1, 2 & 3
+                </div>
+                
+                <div class="cert-item hidden" data-year-nl="Behaald in 2022" data-year-en="Obtained in 2022">
+                    Cisco Network Essentials
+                </div>
+                
+                <div class="cert-item hidden" data-year-nl="Behaald in 2022" data-year-en="Obtained in 2022">
+                    Cisco IT Essentials
+                </div>
+                
+                <div class="cert-item hidden" data-year-nl="Behaald in 2025" data-year-en="Obtained in 2025">
+                    <span class="lang-nl">BHV</span>
+                    <span class="lang-en">Emergency Response (BHV)</span>
+                </div>
+                
+                <div class="cert-item hidden" data-year-nl="Behaald in 2025" data-year-en="Obtained in 2025">
+                    <span class="lang-nl">Sociale hygiëne</span>
+                    <span class="lang-en">Social Hygiene</span>
+                </div>
             </div>
         </section>
 
