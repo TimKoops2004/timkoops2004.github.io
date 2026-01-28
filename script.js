@@ -92,3 +92,30 @@ const observer = new IntersectionObserver((entries) => {
 // Zoek alle elementen met de class 'hidden' en let erop
 const hiddenElements = document.querySelectorAll('.hidden');
 hiddenElements.forEach((el) => observer.observe(el));
+
+/* =========================================
+   TAAL WISSELAAR + ANIMATIE RESET
+   ========================================= */
+const langToggle = document.getElementById('language-toggle');
+const body = document.body;
+
+if (langToggle) {
+    langToggle.addEventListener('change', function() {
+        // 1. Wissel de taal
+        if (this.checked) {
+            body.classList.add('english-mode');
+        } else {
+            body.classList.remove('english-mode');
+        }
+
+        // 2. Herstart de animaties voor alles wat al in beeld is
+        // We pakken elementen die 'hidden' zijn (basis) EN al 'show' hebben (zichtbaar)
+        const visibleElements = document.querySelectorAll('.hidden.show');
+        
+        visibleElements.forEach(el => {
+            el.classList.remove('show'); // 1. Haal de animatie weg (hij wordt onzichtbaar)
+            void el.offsetWidth;         // 2. Dwing de browser dit direct te verwerken (Magische Regel)
+            el.classList.add('show');    // 3. Zet hem terug (Animatie start opnieuw)
+        });
+    });
+}
