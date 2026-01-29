@@ -5,6 +5,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     updateDynamicContent();
     initSmoothScroll();
+    initMobileToggle();
 });
 
 function calculateAge(birthDateString) {
@@ -18,6 +19,21 @@ function calculateAge(birthDateString) {
         age--;
     }
     return age;
+}
+
+function initMobileToggle() {
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const extraContent = document.getElementById('sidebar-extra');
+    
+    if (toggleBtn && extraContent) {
+        toggleBtn.addEventListener('click', () => {
+            // 1. Wissel de zichtbaarheid van de content
+            extraContent.classList.toggle('show');
+            
+            // 2. Wissel de styling van de knop (voor het pijltje)
+            toggleBtn.classList.toggle('active');
+        });
+    }
 }
 
 /* =========================================
