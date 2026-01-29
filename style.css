@@ -656,3 +656,101 @@ body.english-mode span.lang-en { display: inline !important; }
     .language-section { margin-top: 1px; }
     
 }
+
+/* =========================================
+   MOBIEL DESIGN (Alles onder de 850px)
+   ========================================= */
+@media (max-width: 850px) {
+
+    /* 1. Zet alles onder elkaar (in plaats van naast elkaar) */
+    body {
+        flex-direction: column;
+    }
+
+    /* 2. De Sidebar wordt een 'Header' bovenin */
+    .sidebar {
+        position: relative; /* Niet meer vastgeplakt aan de zijkant */
+        width: 100%;        /* Pak de volle breedte */
+        height: auto;       /* Hoogte past zich aan aan de tekst */
+        padding: 40px 20px; /* Iets minder ruimte dan op desktop */
+        
+        /* Zorg dat de schaduw mooi over de content valt */
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+    }
+
+    /* 3. De profielfoto iets kleiner maken voor mobiel */
+    .profile-img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    /* 4. De Hoofdinhoud (rechts) mag nu alle ruimte pakken */
+    .main-content {
+        margin-left: 0;     /* Weg met de marge die ruimte hield voor de sidebar */
+        width: 100%;
+        padding: 40px 25px; /* Fijne marge aan de zijkanten van je tekst */
+    }
+
+    /* 5. Extra: Zorg dat secties niet te ver uit elkaar staan */
+    section {
+        margin-bottom: 40px;
+    }
+} 
+
+/* =========================================
+   MOBIEL MENU KNOPJE
+   ========================================= */
+
+/* 1. Standaard (Desktop/Laptop): Knop weg, inhoud tonen */
+.mobile-toggle-btn {
+    display: none;
+}
+
+/* 2. Mobiel (schermen kleiner dan 850px) */
+@media (max-width: 850px) {
+
+    /* De knop zichtbaar maken */
+    .mobile-toggle-btn {
+        display: block;
+        margin: 15px auto 5px auto; /* Centreren en beetje ruimte */
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-toggle-btn:hover {
+        background: var(--accent);
+        color: var(--sidebar-bg);
+    }
+    
+    /* Het icoontje laten draaien als hij open is */
+    .mobile-toggle-btn.active i {
+        transform: rotate(180deg);
+    }
+
+    /* De inhoud (contact, skills) standaard VERBERGEN op mobiel */
+    .sidebar-extra {
+        display: none;
+        margin-top: 20px;
+        animation: fadeIn 0.5s ease;
+    }
+
+    /* De inhoud TONEN als de class 'show' is toegevoegd door JS */
+    .sidebar-extra.show {
+        display: block;
+    }
+    
+    /* Simpele animatie voor het openklappen */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
