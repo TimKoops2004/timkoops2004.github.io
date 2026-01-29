@@ -79,6 +79,22 @@ h2 i {
     
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     z-index: 10;
+    
+    /* NIEUW: Zorg dat we kunnen scrollen als het te klein is */
+    overflow-y: auto;
+    
+    /* Optioneel: Maak de scrollbar mooier/dunner in Firefox/Chrome */
+    scrollbar-width: thin; 
+    scrollbar-color: var(--accent) var(--sidebar-bg);
+}
+
+/* Optioneel: Webkit scrollbar styling (Chrome/Edge/Safari) */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+    border-radius: 3px;
 }
 
 .profile-img {
@@ -551,3 +567,92 @@ input:checked + .slider:before { transform: translateX(20px); }
 body.english-mode .lang-nl { display: none !important; }
 body.english-mode div.lang-en { display: block !important; }
 body.english-mode span.lang-en { display: inline !important; }
+
+/* =========================
+   11. VERTICALE RESPONSIVITEIT
+   ========================= */
+
+/* --- STAP 1: Voor 1080p schermen (Tussenmaatje) --- */
+/* Als hoogte onder 980px komt, passen we de marges aan maar houden de foto groot */
+@media (max-height: 980px) {
+    .sidebar {
+        /* Iets minder padding boven/onder dan origineel (was 10px 30px 40px) */
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* Foto bijna op ware grootte (155px vs 160px), dat oogt als "normaal" */
+    .profile-img {
+        width: 155px;
+        height: 155px;
+        margin-bottom: 15px; /* Iets minder ruimte onder de foto */
+    }
+
+    /* We winnen de ruimte terug in de tussenruimtes van de tekst */
+    .profile-header h1 { margin-bottom: 5px; }
+    .role { margin-bottom: 10px; }
+    .tagline { margin-bottom: 15px; }
+    
+    .contact-info { 
+        margin-bottom: 20px; 
+        gap: 6px; /* Iets dichter op elkaar dan origineel */
+    }
+    
+    .skill-category { 
+        margin-top: 15px; 
+        margin-bottom: 6px; 
+    }
+}
+
+/* --- STAP 2: Voor Laptops & Kleine schermen (Jouw custom instellingen) --- */
+@media (max-height: 850px) {
+    
+    .sidebar {
+        padding: 15px 20px; 
+    }
+
+    /* Foto blijft 150px zoals jij wilde */
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        border-width: 4px;
+        margin-bottom: 8px;
+    }
+
+    /* Naam iets groter */
+    .profile-header h1 { 
+        font-size: 1.6rem; 
+        margin-bottom: 2px; 
+    }
+    
+    /* Rol tekst iets groter */
+    .role { 
+        font-size: 0.85rem; 
+        margin-bottom: 5px; 
+    }
+    
+    /* Contact info tekst groter */
+    .contact-info {
+        gap: 4px;
+        margin-bottom: 12px;
+    }
+    .contact-info .info-item {
+        padding: 6px 10px;
+        font-size: 0.85rem; 
+    }
+
+    /* Categorie titels iets groter */
+    .skill-category {
+        font-size: 0.85rem;
+        margin-top: 12px;
+    }
+    
+    /* Skill badges tekst groter */
+    .skill-tags > span {
+        padding: 4px 8px;
+        font-size: 0.8rem; 
+    }
+    
+    .language-section { margin-top: 1px; }
+    
+}
