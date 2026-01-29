@@ -577,7 +577,7 @@ body.english-mode span.lang-en { display: inline !important; }
 @media (max-height: 980px) {
     .sidebar {
         /* Iets minder padding boven/onder dan origineel (was 10px 30px 40px) */
-        padding-top: 20px;
+        padding-top: 10px;
         padding-bottom: 20px;
     }
 
