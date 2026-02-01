@@ -472,15 +472,11 @@ body.english-mode .cert-item::after {
 
 /* De Actie: Invliegen */
 .show {
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 1s ease forwards;
 }
 
 /* --- Certificaten Specifiek --- */
-/* Certificaten hebben ook een hover-effect nodig als ze er eenmaal zijn */
 .cert-item.show {
-    /* De animatie komt al van de .show class hierboven */
-    
-    /* We zetten de transition weer AAN voor de hover */
     transition: all 0.3s ease; 
 }
 
@@ -497,17 +493,15 @@ body.english-mode .cert-item::after {
    ========================= */
 
 .language-section {
-    /* GEEN border en GEEN footer-marge meer */
-    margin-top: 5px;       /* Klein beetje ruimte onder het kopje */
-    padding-top: 0;        /* Geen extra witruimte */
-    border-top: none;      /* Die streep halen we weg */
+    margin-top: 5px;       
+    padding-top: 0;        
+    border-top: none;      
     
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* BELANGRIJK: Links uitlijnen (net als de tekst) */
+    justify-content: flex-start;
     gap: 12px;
     
-    /* Zorg dat hij mooi in lijn staat met de skills erboven */
     padding-left: 2px; 
 }
 
@@ -516,7 +510,7 @@ body.english-mode .cert-item::after {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--sidebar-text);
-    opacity: 0.7; /* Iets subtieler */
+    opacity: 0.7; 
     transition: opacity 0.3s;
 }
 
@@ -525,7 +519,7 @@ body.english-mode .cert-item::after {
 .language-section:has(input:checked) .lang-label:last-child { opacity: 1; color: #fff; }       /* EN is aan */
 
 
-/* --- De Switch Knop (Iets compacter en strakker) --- */
+/* --- De Switch Knop --- */
 .switch {
     position: relative;
     display: inline-block;
@@ -539,8 +533,6 @@ body.english-mode .cert-item::after {
     position: absolute;
     cursor: pointer;
     top: 0; left: 0; right: 0; bottom: 0;
-    
-    /* Achtergrondkleur als hij UIT (NL) staat: Donkerder voor contrast */
     background-color: rgba(255, 255, 255, 0.2); 
     transition: .4s;
     border-radius: 34px;
@@ -556,13 +548,10 @@ body.english-mode .cert-item::after {
     border-radius: 50%;
 }
 
-/* Kleur als hij AAN (EN) staat: Jouw accentkleur */
 input:checked + .slider { background-color: var(--accent); }
-
-/* Schuif het bolletje naar rechts */
 input:checked + .slider:before { transform: translateX(20px); }
 
-/* --- Wissel Mechanisme (Blijft hetzelfde) --- */
+/* --- Wissel Mechanisme --- */
 .lang-en { display: none; }
 body.english-mode .lang-nl { display: none !important; }
 body.english-mode div.lang-en { display: block !important; }
@@ -573,29 +562,25 @@ body.english-mode span.lang-en { display: inline !important; }
    ========================= */
 
 /* --- STAP 1: Voor 1080p schermen (Tussenmaatje) --- */
-/* Als hoogte onder 980px komt, passen we de marges aan maar houden de foto groot */
 @media (max-height: 980px) {
     .sidebar {
-        /* Iets minder padding boven/onder dan origineel (was 10px 30px 40px) */
         padding-top: 10px;
         padding-bottom: 20px;
     }
 
-    /* Foto bijna op ware grootte (155px vs 160px), dat oogt als "normaal" */
     .profile-img {
         width: 155px;
         height: 155px;
-        margin-bottom: 15px; /* Iets minder ruimte onder de foto */
+        margin-bottom: 15px;
     }
 
-    /* We winnen de ruimte terug in de tussenruimtes van de tekst */
     .profile-header h1 { margin-bottom: 5px; }
     .role { margin-bottom: 10px; }
     .tagline { margin-bottom: 15px; }
     
     .contact-info { 
         margin-bottom: 20px; 
-        gap: 6px; /* Iets dichter op elkaar dan origineel */
+        gap: 6px;
     }
     
     .skill-category { 
@@ -604,14 +589,13 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 }
 
-/* --- STAP 2: Voor Laptops & Kleine schermen (Jouw custom instellingen) --- */
+/* --- STAP 2: Voor Laptops & Kleine schermen --- */
 @media (max-height: 850px) {
     
     .sidebar {
         padding: 15px 20px; 
     }
 
-    /* Foto blijft 150px zoals jij wilde */
     .profile-img {
         width: 150px;
         height: 150px;
@@ -619,19 +603,16 @@ body.english-mode span.lang-en { display: inline !important; }
         margin-bottom: 8px;
     }
 
-    /* Naam iets groter */
     .profile-header h1 { 
         font-size: 1.6rem; 
         margin-bottom: 2px; 
     }
     
-    /* Rol tekst iets groter */
     .role { 
         font-size: 0.85rem; 
         margin-bottom: 5px; 
     }
     
-    /* Contact info tekst groter */
     .contact-info {
         gap: 4px;
         margin-bottom: 12px;
@@ -641,48 +622,25 @@ body.english-mode span.lang-en { display: inline !important; }
         font-size: 0.85rem; 
     }
 
-    /* Categorie titels iets groter */
     .skill-category {
         font-size: 0.85rem;
         margin-top: 12px;
     }
     
-    /* Skill badges tekst groter */
     .skill-tags > span {
         padding: 4px 8px;
         font-size: 0.8rem; 
     }
     
     .language-section { margin-top: 1px; }
-    
 }
 
 /* =========================================
-   1. ANIMATIES (Snelheid zoals desktop: 1s)
+   12. MOBIEL KNOPJE (STANDAARD VERBORGEN OP DESKTOP)
    ========================================= */
-@keyframes fadeInUp {
-    from { 
-        opacity: 0; 
-        filter: blur(4px);           
-        transform: translateY(40px); 
-    }
-    to { 
-        opacity: 1; 
-        filter: blur(0);             
-        transform: translateY(0); 
-    }
+.mobile-toggle-btn {
+    display: none; /* DIT ZORGT DAT HIJ WEG IS OP PC */
 }
-
-.hidden {
-    opacity: 0;
-    filter: blur(4px);
-}
-
-.show {
-    /* TERUG NAAR DESKTOP SNELHEID (1s) */
-    animation: fadeInUp 1s ease forwards;
-}
-
 
 /* =========================================
    2. MOBIEL DESIGN (Alles onder de 850px)
@@ -714,7 +672,7 @@ body.english-mode span.lang-en { display: inline !important; }
         padding: 10px 20px 40px 20px;
     }
 
-    /* --- DE CONTACT KNOP --- */
+    /* --- DE CONTACT KNOP (HIER ZICHTBAAR MAKEN) --- */
     .mobile-toggle-btn {
         display: flex;
         flex-direction: column;
@@ -750,7 +708,7 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 
 
-    /* --- DE TIJDLIJN (Gecorrigeerd) --- */
+    /* --- DE TIJDLIJN --- */
     
     /* 1. De LIJN zelf */
     .split-timeline.hidden {
@@ -781,32 +739,31 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 
 
-    /* 3. FIX: DE DATUM TEKST CENTREREN (Krachtige methode) */
+    /* 3. FIX: DE DATUM TEKST CENTREREN */
     .timeline-time {
         display: flex;           
-        justify-content: center; /* Centreer het blokje op het scherm */
+        justify-content: center;
         align-items: center;
         width: 100%;
         padding: 20px 0;
-        margin: 0;               /* Reset margins */
+        margin: 0;
         border: none;
         flex: auto;
     }
 
     .date-badge {
-        /* Maak van het blokje zelf OOK een flexbox om de tekst te centreren */
         display: flex;           
         justify-content: center; 
         align-items: center;
         
-        width: fit-content;      /* Pas breedte aan op de tekst */
-        min-width: 120px;        /* Minimale breedte voor korte datums */
-        margin: 0 auto;          /* Extra zekerheid voor centreren */
+        width: fit-content;
+        min-width: 120px;
+        margin: 0 auto;
         
         text-align: center;
         background-color: var(--main-bg);
         padding: 6px 20px;
-        border-radius: 50px;     /* Mooie ronde pil-vorm */
+        border-radius: 50px;
         border: 1px solid var(--line-color);
         position: relative;
         z-index: 1;
