@@ -472,7 +472,7 @@ body.english-mode .cert-item::after {
 
 /* De Actie: Invliegen */
 .show {
-    animation: fadeInUp 1s ease forwards;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 /* --- Certificaten Specifiek --- */
@@ -658,99 +658,177 @@ body.english-mode span.lang-en { display: inline !important; }
 }
 
 /* =========================================
-   MOBIEL DESIGN (Alles onder de 850px)
+   1. ANIMATIES (Snelheid zoals desktop: 1s)
+   ========================================= */
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        filter: blur(4px);           
+        transform: translateY(40px); 
+    }
+    to { 
+        opacity: 1; 
+        filter: blur(0);             
+        transform: translateY(0); 
+    }
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(4px);
+}
+
+.show {
+    /* TERUG NAAR DESKTOP SNELHEID (1s) */
+    animation: fadeInUp 1s ease forwards;
+}
+
+
+/* =========================================
+   2. MOBIEL DESIGN (Alles onder de 850px)
    ========================================= */
 @media (max-width: 850px) {
 
-    /* 1. Zet alles onder elkaar (in plaats van naast elkaar) */
+    /* --- ALGEMENE STRUCTUUR --- */
     body {
         flex-direction: column;
     }
 
-    /* 2. De Sidebar wordt een 'Header' bovenin */
     .sidebar {
-        position: relative; /* Niet meer vastgeplakt aan de zijkant */
-        width: 100%;        /* Pak de volle breedte */
-        height: auto;       /* Hoogte past zich aan aan de tekst */
-        padding: 40px 20px; /* Iets minder ruimte dan op desktop */
-        
-        /* Zorg dat de schaduw mooi over de content valt */
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
-
-    /* 3. De profielfoto iets kleiner maken voor mobiel */
+    
     .profile-img {
-        width: 120px;
-        height: 120px;
+        width: 160px; 
+        height: 160px;
         margin-bottom: 10px;
     }
 
-    /* 4. De Hoofdinhoud (rechts) mag nu alle ruimte pakken */
     .main-content {
-        margin-left: 0;     /* Weg met de marge die ruimte hield voor de sidebar */
+        margin-left: 0;
         width: 100%;
-        padding: 40px 25px; /* Fijne marge aan de zijkanten van je tekst */
+        padding: 10px 20px 40px 20px;
     }
 
-    /* 5. Extra: Zorg dat secties niet te ver uit elkaar staan */
-    section {
-        margin-bottom: 40px;
-    }
-} 
-
-/* =========================================
-   MOBIEL MENU KNOPJE
-   ========================================= */
-
-/* 1. Standaard (Desktop/Laptop): Knop weg, inhoud tonen */
-.mobile-toggle-btn {
-    display: none;
-}
-
-/* 2. Mobiel (schermen kleiner dan 850px) */
-@media (max-width: 850px) {
-
-    /* De knop zichtbaar maken */
+    /* --- DE CONTACT KNOP --- */
     .mobile-toggle-btn {
-        display: block;
-        margin: 15px auto 5px auto; /* Centreren en beetje ruimte */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 5px auto 15px auto;
         background: transparent;
-        border: 2px solid var(--accent);
-        color: var(--accent);
-        padding: 8px 20px;
-        border-radius: 20px;
+        border: none;
+        color: var(--sidebar-text);
         font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s ease;
     }
 
-    .mobile-toggle-btn:hover {
-        background: var(--accent);
-        color: var(--sidebar-bg);
+    .mobile-toggle-btn i {
+        margin-top: 4px;
+        font-size: 0.8rem;
+        opacity: 0.7;
+        transition: transform 0.3s ease;
     }
-    
-    /* Het icoontje laten draaien als hij open is */
+
     .mobile-toggle-btn.active i {
         transform: rotate(180deg);
     }
-
-    /* De inhoud (contact, skills) standaard VERBERGEN op mobiel */
+    
     .sidebar-extra {
         display: none;
-        margin-top: 20px;
-        animation: fadeIn 0.5s ease;
+        margin-top: 10px;
     }
-
-    /* De inhoud TONEN als de class 'show' is toegevoegd door JS */
     .sidebar-extra.show {
         display: block;
+        animation: fadeInUp 0.5s ease-out forwards;
     }
+
+
+    /* --- DE TIJDLIJN (Gecorrigeerd) --- */
     
-    /* Simpele animatie voor het openklappen */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+    /* 1. De LIJN zelf */
+    .split-timeline.hidden {
+        opacity: 0;
+        filter: none; 
+    }
+    .split-timeline.show {
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    .split-timeline::before {
+        display: block;
+        left: 50%;
+        top: 60px; 
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+
+    /* 2. De KAARTJES en DATUMS */
+    .timeline-row {
+        flex-direction: column-reverse; 
+        margin-bottom: 0;
+        opacity: 0; 
+    }
+    .timeline-row.show {
+        animation: fadeInUp 1s ease forwards; 
+    }
+
+
+    /* 3. FIX: DE DATUM TEKST CENTREREN (Krachtige methode) */
+    .timeline-time {
+        display: flex;           
+        justify-content: center; /* Centreer het blokje op het scherm */
+        align-items: center;
+        width: 100%;
+        padding: 20px 0;
+        margin: 0;               /* Reset margins */
+        border: none;
+        flex: auto;
+    }
+
+    .date-badge {
+        /* Maak van het blokje zelf OOK een flexbox om de tekst te centreren */
+        display: flex;           
+        justify-content: center; 
+        align-items: center;
+        
+        width: fit-content;      /* Pas breedte aan op de tekst */
+        min-width: 120px;        /* Minimale breedte voor korte datums */
+        margin: 0 auto;          /* Extra zekerheid voor centreren */
+        
+        text-align: center;
+        background-color: var(--main-bg);
+        padding: 6px 20px;
+        border-radius: 50px;     /* Mooie ronde pil-vorm */
+        border: 1px solid var(--line-color);
+        position: relative;
+        z-index: 1;
+        font-size: 0.85rem;
+    }
+
+    /* Oude elementen opruimen */
+    .timeline-time::after, 
+    .timeline-row:first-child .timeline-time::after,
+    .job-card::before, 
+    .job-card::after {
+        display: none;
+    }
+
+    .timeline-content {
+        padding: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .job-card {
+        margin: 0 auto;
+        width: 100%;
     }
 }
-
