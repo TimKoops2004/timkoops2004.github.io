@@ -656,14 +656,40 @@ body.english-mode span.lang-en { display: inline !important; }
         position: relative;
         width: 100%;
         height: auto;
-        padding: 20px;
+        
+        /* AANGEPAST: De 3e waarde (bottom) is nu 0. 
+           Dit haalt de witruimte onderaan het blauwe vlak weg. */
+        padding: 15px 20px 5px 20px; 
+        
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        
+        /* Zorgt dat de sidebar meegroeit met de inhoud */
+        display: flex;
+        flex-direction: column;
     }
     
     .profile-img {
-        width: 160px; 
-        height: 160px;
-        margin-bottom: 10px;
+        width: 140px; 
+        height: 140px;
+        margin-bottom: 5px;
+    }
+
+    /* HEADER TEKSTEN */
+    .profile-header h1 { 
+        margin-bottom: 2px; 
+        font-size: 1.5rem; 
+    }
+    .role { 
+        margin-bottom: 5px; 
+        font-size: 0.8rem; 
+    }
+    
+    /* HIER IS HIJ WEER TERUG: */
+    .tagline { 
+        display: block;        /* Weer zichtbaar maken */
+        margin-bottom: 10px;   /* Ruimte tot aan de knop */
+        font-size: 0.8rem; 
+        opacity: 0.9;
     }
 
     .main-content {
@@ -672,52 +698,60 @@ body.english-mode span.lang-en { display: inline !important; }
         padding: 10px 20px 40px 20px;
     }
 
-    /* --- DE CONTACT KNOP (HIER ZICHTBAAR MAKEN) --- */
+/* --- DE CONTACT KNOP --- */
     .mobile-toggle-btn {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 5px auto 15px auto;
+        
+        /* AANGEPAST: */
+        margin-top: 25px;    /* 1. Duwt de knop ver naar beneden (weg van de tekst) */
+        margin-bottom: 0;    /* 2. Geen ruimte meer onder de knop */
+        margin-left: auto;
+        margin-right: auto;
+        
         background: transparent;
         border: none;
         color: var(--sidebar-text);
         font-family: 'Poppins', sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
+        
+        font-size: 0.85rem; 
+        font-weight: 400;
+        line-height: 1;
+        
         cursor: pointer;
     }
 
     .mobile-toggle-btn i {
-        margin-top: 4px;
-        font-size: 0.8rem;
-        opacity: 0.7;
+        margin-top: 2px;
+        font-size: 0.7rem;
+        opacity: 0.6;
         transition: transform 0.3s ease;
+        /* Eventueel nog een klein beetje extra ruimte onder het pijltje als je wilt: */
+        padding-bottom: 5px; 
     }
 
     .mobile-toggle-btn.active i {
         transform: rotate(180deg);
     }
     
+    /* --- HET VERBORGEN GEDEELTE --- */
     .sidebar-extra {
-        display: none;
+        display: none; 
         margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,0.1); 
     }
     .sidebar-extra.show {
-        display: block;
-        animation: fadeInUp 0.5s ease-out forwards;
+        display: block; 
+        margin-bottom: 10px;
+        animation: fadeInUp 0.4s ease-out forwards;
     }
 
 
     /* --- DE TIJDLIJN --- */
-    
-    /* 1. De LIJN zelf */
-    .split-timeline.hidden {
-        opacity: 0;
-        filter: none; 
-    }
-    .split-timeline.show {
-        animation: fadeInUp 1s ease forwards;
-    }
+    .split-timeline.hidden { opacity: 0; filter: none; }
+    .split-timeline.show { animation: fadeInUp 1s ease forwards; }
 
     .split-timeline::before {
         display: block;
@@ -728,64 +762,26 @@ body.english-mode span.lang-en { display: inline !important; }
         z-index: 0;
     }
 
-    /* 2. De KAARTJES en DATUMS */
-    .timeline-row {
-        flex-direction: column-reverse; 
-        margin-bottom: 0;
-        opacity: 0; 
-    }
-    .timeline-row.show {
-        animation: fadeInUp 1s ease forwards; 
-    }
+    .timeline-row { flex-direction: column-reverse; margin-bottom: 0; opacity: 0; }
+    .timeline-row.show { animation: fadeInUp 1s ease forwards; }
 
-
-    /* 3. FIX: DE DATUM TEKST CENTREREN */
     .timeline-time {
-        display: flex;           
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        padding: 20px 0;
-        margin: 0;
-        border: none;
-        flex: auto;
+        display: flex; justify-content: center; align-items: center;
+        width: 100%; padding: 20px 0; margin: 0; border: none; flex: auto;
     }
 
     .date-badge {
-        display: flex;           
-        justify-content: center; 
-        align-items: center;
-        
-        width: fit-content;
-        min-width: 120px;
-        margin: 0 auto;
-        
-        text-align: center;
-        background-color: var(--main-bg);
-        padding: 6px 20px;
-        border-radius: 50px;
+        display: flex; justify-content: center; align-items: center;
+        width: fit-content; min-width: 120px; margin: 0 auto;
+        text-align: center; background-color: var(--main-bg);
+        padding: 6px 20px; border-radius: 50px;
         border: 1px solid var(--line-color);
-        position: relative;
-        z-index: 1;
-        font-size: 0.85rem;
+        position: relative; z-index: 1; font-size: 0.85rem;
     }
 
-    /* Oude elementen opruimen */
-    .timeline-time::after, 
-    .timeline-row:first-child .timeline-time::after,
-    .job-card::before, 
-    .job-card::after {
-        display: none;
-    }
+    .timeline-time::after, .timeline-row:first-child .timeline-time::after,
+    .job-card::before, .job-card::after { display: none; }
 
-    .timeline-content {
-        padding: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .job-card {
-        margin: 0 auto;
-        width: 100%;
-    }
+    .timeline-content { padding: 0; width: 100%; z-index: 1; }
+    .job-card { margin: 0 auto; width: 100%; }
 }
