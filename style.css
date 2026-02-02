@@ -686,7 +686,7 @@ body.english-mode span.lang-en { display: inline !important; }
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 10px 20px 20px 20px;
+        padding: 20px 20px 20px 20px;
     }
 
     footer { 
@@ -722,8 +722,8 @@ body.english-mode span.lang-en { display: inline !important; }
 
     /* --- 3. SIDEBAR INHOUD (FOTO & TEKST) --- */
     .profile-img {
-        width: 220px; 
-        height: 220px;
+        width: 200px; 
+        height: 200px;
         margin-bottom: 5px;
     }
 
