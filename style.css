@@ -237,6 +237,29 @@ footer {
     align-items: center;
 }
 
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ruimte tussen © en de link */
+    font-size: 0.85rem;
+}
+
+.separator {
+    opacity: 0.4;
+}
+
+.legal-link {
+    color: var(--heading-color);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.legal-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
 /* De knop zelf */
 .back-to-top {
     text-decoration: none;      /* Geen streep eronder */
@@ -690,18 +713,18 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 
     footer { 
-    border-top: var(--border); 
-    padding-top: 15px; 
-    padding-bottom: 0px; 
-    
-    color: var(--heading-color); 
-    opacity: 0.6; 
-    font-size: 0.9rem; 
-    
-    /* NIEUW: Zorgt dat tekst links en knop rechts staat */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+        border-top: var(--border); 
+        padding-top: 10px; 
+        padding-bottom: 0px; /* Iets meer ruimte onderaan zodat tekst niet tegen de rand plakt */
+        
+        color: var(--heading-color); 
+        opacity: 0.6; 
+        font-size: 0.9rem; 
+        
+        display: flex;
+        flex-direction: column-reverse; /* DE TRUC: Knop komt boven, Tekst gaat naar beneden */
+        align-items: center;            /* Alles netjes in het midden centreren */
+        gap: 10px;                      /* Ruimte tussen de knop en de tekst */
     }
 
     /* --- 2. SIDEBAR CONTAINER (HET BLAUWE VLAK) --- */
@@ -857,3 +880,63 @@ body.english-mode span.lang-en { display: inline !important; }
     .timeline-content { padding: 0; width: 100%; z-index: 1; }
     .job-card { margin: 0 auto; width: 100%; }
 }
+
+/* =========================
+   13. LEGAL PAGINA (NIEUW)
+   ========================= */
+
+/* Zorgt dat de achtergrondkleur goed blijft */
+body.legal-page {
+    display: block; /* Reset de flexbox van de main body */
+    background-color: var(--main-bg);
+}
+
+/* De container voor de tekst: gecentreerd en leesbaar */
+.legal-content {
+    max-width: 800px;
+    margin: 0 auto;       /* Zet hem in het midden */
+    padding: 60px 20px;   /* Ruimte rondom */
+    padding-top: 60px;
+    padding-bottom: 20px;
+    min-height: 100vh;    /* Zorg dat hij beeldvullend is */
+    display: flex;
+    flex-direction: column;
+}
+
+/* De 'Terug' knop styling */
+.legal-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--heading-color);
+    font-weight: 600;
+    margin-bottom: 40px;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.legal-back-btn:hover {
+    color: var(--accent);
+}
+
+/* Kopjes op deze pagina iets kleiner maken voor rust */
+.legal-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--heading-color);
+}
+
+/* Tekst leesbaarder maken */
+.legal-content p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* Simpele footer op deze pagina */
+.legal-content footer {
+    margin-top: auto;     /* Duwt footer naar beneden */
+}
+
+
