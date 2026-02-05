@@ -701,6 +701,10 @@ body.english-mode span.lang-en { display: inline !important; }
    ========================================= */
 @media (max-width: 850px) {
 
+    *{
+        -webkit-tap-highlight-color: transparent;
+    }
+
     /* --- 1. ALGEMENE STRUCTUUR & LAYOUT --- */
     body {
         flex-direction: column;
