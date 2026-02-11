@@ -722,6 +722,11 @@ body.english-mode span.lang-en { display: inline !important; }
         margin-left: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
+        
+        opacity: 0; /* Begin onzichtbaar */
+        /* De '0.2s' zorgt dat hij pas start nadat de sidebar al beweegt */
+        animation: fadeInUp 1s ease 0.2s forwards;
+        
     }
 
     footer { 
@@ -753,6 +758,19 @@ body.english-mode span.lang-en { display: inline !important; }
         /* Flexbox aanzetten zodat we elementen naar beneden kunnen duwen */
         display: flex;
         flex-direction: column;
+        background-color: var(--sidebar-bg);
+    }
+
+    /* STAP 2: Hier plak je jouw nieuwe code (De inhoud beweegt wel) */
+    .sidebar .profile-img,
+    .sidebar .profile-header,
+    .sidebar .role,
+    .sidebar .tagline,
+    .sidebar .mobile-socials,      /* Als je deze hebt toegevoegd */
+    .sidebar .mobile-toggle-btn {
+        opacity: 0; /* Begin onzichtbaar */
+        /* De inhoud vliegt nu mooi over de stilstaande blauwe achtergrond */
+        animation: fadeInUp 1s ease 0.1s forwards;
     }
 
     /* --- 3. SIDEBAR INHOUD (FOTO & TEKST) --- */
