@@ -135,3 +135,14 @@ if (langToggle) {
         });
     });
 }
+
+/* ==========================================
+   FIX: ALTIJD BOVENAAN BEGINNEN BIJ REFRESH
+   ========================================== */
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+} else {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    }
+}
