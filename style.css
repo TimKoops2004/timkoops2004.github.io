@@ -709,8 +709,25 @@ body.english-mode span.lang-en { display: inline !important; }
    ========================================= */
 @media (max-width: 850px) {
 
+    /* 1. Reset blauwe tik-kleur */
     *{
         -webkit-tap-highlight-color: transparent;
+    }
+
+    /* 2. NIEUW: VERBERG SCROLLBALKEN (Maar laat scrollen wel werken) */
+    
+    /* Voor Chrome, Safari & Opera (De meeste telefoons) */
+    .sidebar::-webkit-scrollbar,
+    .sidebar-extra::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    html::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Voor Firefox, IE en Edge */
+    .sidebar, .sidebar-extra, body, html {
+        -ms-overflow-style: none;  /* IE en Edge */
+        scrollbar-width: none;  /* Firefox */
     }
 
     /* --- 1. ALGEMENE STRUCTUUR & LAYOUT --- */
