@@ -4,9 +4,9 @@ html {
     scroll-behavior: smooth;
 }
 
-/* =========================
-   1. VARIABELEN (KLEUREN & LIJNEN)
-   ========================= */
+/* ==========================================================================
+   1. VARIABELEN & KLEURENPALET
+   ========================================================================== */
 :root {
     /* --- Sidebar & Navigatie --- */
     --sidebar-bg: #05293d;   
@@ -31,9 +31,9 @@ html {
     --border: 1px solid rgba(0,0,0,0.1); 
 }
 
-/* =========================
-   2. ALGEMENE STIJLEN
-   ========================= */
+/* ==========================================================================
+   2. ALGEMENE STIJLEN (GLOBAL)
+   ========================================================================== */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -48,7 +48,9 @@ body {
     min-height: 100vh;
 }
 
-section { margin-bottom: 35px; }
+section { 
+    margin-bottom: 35px; 
+}
 
 .main-content > section:last-of-type {
     margin-bottom: 35px;
@@ -68,9 +70,9 @@ h2 i {
     font-size: 1.5rem; 
 }
 
-/* =========================
-   3. SIDEBAR (LINKS)
-   ========================= */
+/* ==========================================================================
+   3. SIDEBAR (DESKTOP)
+   ========================================================================== */
 .sidebar {
     width: 320px;
     background-color: var(--sidebar-bg);
@@ -88,15 +90,15 @@ h2 i {
     box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     z-index: 10;
     
-    /* NIEUW: Zorg dat we kunnen scrollen als het te klein is */
+    /* Scrollen mogelijk maken op kleinere hoogtes */
     overflow-y: auto;
     
-    /* Optioneel: Maak de scrollbar mooier/dunner in Firefox/Chrome */
+    /* Scrollbar styling (Firefox) */
     scrollbar-width: thin; 
     scrollbar-color: var(--accent) var(--sidebar-bg);
 }
 
-/* Optioneel: Webkit scrollbar styling (Chrome/Edge/Safari) */
+/* Scrollbar styling (Chrome/Edge/Safari) */
 .sidebar::-webkit-scrollbar {
     width: 6px;
 }
@@ -105,6 +107,7 @@ h2 i {
     border-radius: 3px;
 }
 
+/* --- Profiel Foto & Header --- */
 .profile-img {
     width: 160px; 
     height: 160px;
@@ -119,7 +122,13 @@ h2 i {
 .profile-header { text-align: center; }
 .profile-header h1 { font-size: 1.8rem; line-height: 1.1; margin-bottom: 5px; color: #fff; }
 
-.role { color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; }
+.role { 
+    color: var(--accent); 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    font-size: 0.85rem; 
+    margin-bottom: 15px; 
+}
 
 .tagline { 
     font-size: 0.85rem; 
@@ -127,7 +136,7 @@ h2 i {
     margin-bottom: 20px; 
 }
 
-/* --- CONTACT INFO --- */
+/* --- Contact Informatie --- */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -171,8 +180,7 @@ div.info-item {
     cursor: default;
 }
 
-
-/* --- Skills Section --- */
+/* --- Skills Sectie (Sidebar) --- */
 .skills-section { 
     margin-top: 10px; 
 }
@@ -191,16 +199,12 @@ div.info-item {
 
 .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
-/* AANPASSING: Iets groter gemaakt */
 .skill-tags > span { 
     background: transparent; 
     border: 1px solid rgba(255,255,255,0.3); 
     color: #fff;
-    
-    /* Iets meer padding en groter lettertype */
     padding: 6px 12px; 
     font-size: 0.85rem; 
-    
     border-radius: 15px; 
     transition: all 0.3s ease;
     cursor: default;
@@ -211,9 +215,9 @@ div.info-item {
     color: var(--accent);
 }
 
-/* =========================
+/* ==========================================================================
    4. MAIN CONTENT (RECHTS)
-   ========================= */
+   ========================================================================== */
 .main-content {
     margin-left: 320px; 
     width: calc(100% - 320px);
@@ -222,6 +226,7 @@ div.info-item {
 
 .main-content > section > p { color: var(--heading-color); }
 
+/* --- Footer --- */
 footer { 
     border-top: var(--border); 
     padding-top: 15px; 
@@ -231,7 +236,6 @@ footer {
     opacity: 0.6; 
     font-size: 0.9rem; 
     
-    /* NIEUW: Zorgt dat tekst links en knop rechts staat */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -240,7 +244,7 @@ footer {
 .footer-left {
     display: flex;
     align-items: center;
-    gap: 10px; /* Ruimte tussen © en de link */
+    gap: 10px; 
     font-size: 0.85rem;
 }
 
@@ -260,35 +264,32 @@ footer {
     text-decoration: underline;
 }
 
-/* De knop zelf */
+/* "Terug naar boven" knop */
 .back-to-top {
-    text-decoration: none;      /* Geen streep eronder */
-    color: var(--heading-color); /* Zelfde kleur als de tekst */
+    text-decoration: none;      
+    color: var(--heading-color); 
     font-weight: 0;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 8px; /* Ruimte tussen tekst en pijltje */
+    gap: 8px; 
 }
 
-/* Hover effect: Kleur van je accent (geel/goud) */
 .back-to-top:hover {
-    color: var(--accent); /* Of gebruik een specifieke kleurcode als #e5cb8b */
+    color: var(--accent); 
 }
 
-/* --- Introductie --- */
+/* --- Introductie Sectie --- */
 #intro h2 { margin-bottom: 8px; margin-top: 0; }
 #intro p { max-width: 880px; line-height: 1.8; color: var(--heading-color); }
 #intro { padding-bottom: 0px; margin-bottom: 40px; }
 
-/* =========================
-   5. TIJDLIJN STRUCTUUR
-   ========================= */
+/* ==========================================================================
+   5. TIJDLIJN STRUCTUUR (DESKTOP)
+   ========================================================================== */
 .split-timeline { 
     position: relative; 
-    
-    /* NIEUW: Dit maakt de lijn op de PC langer aan de onderkant */
-    padding-bottom: 0px; /* Maak dit getal hoger voor een langere lijn */
+    padding-bottom: 0px; /* Lengte van de lijn onderaan */
 }
 
 /* De Verticale Grijze Lijn */
@@ -306,6 +307,7 @@ footer {
 
 .timeline-row { display: flex; gap: 0; position: relative; }
 
+/* Tijd aanduiding (Links) */
 .timeline-time {
     flex: 0 0 165px; 
     width: 165px;
@@ -318,7 +320,7 @@ footer {
     position: relative;
 }
 
-/* De Bolletjes op de lijn */
+/* Bolletjes op de tijdlijn */
 .timeline-time::after {
     content: '';
     position: absolute;
@@ -351,9 +353,9 @@ footer {
     padding-top: 2.5px;
 }
 
-/* =========================
-   6. INTERACTIEVE KAARTEN
-   ========================= */
+/* ==========================================================================
+   6. INTERACTIEVE KAARTEN (WERKERVARING/OPLEIDING)
+   ========================================================================== */
 .job-card {
     background: var(--card-bg);
     border: var(--border);
@@ -365,6 +367,7 @@ footer {
     z-index: 1; 
 }
 
+/* Pijltje aan de zijkant van de kaart */
 .job-card::before {
     content: ''; 
     position: absolute; 
@@ -392,6 +395,7 @@ footer {
 .job-card:hover { transform: translateX(5px); border-color: var(--heading-color); }
 .job-card:hover::before { border-right-color: var(--heading-color) !important; }
 
+/* Actieve status (uitgeklapt) */
 .job-card.active { border-color: var(--heading-color); background-color: var(--active-card-bg); }
 .job-card.active::before { border-right-color: var(--heading-color) !important; }
 .job-card.active::after { border-right-color: var(--active-card-bg); }
@@ -403,6 +407,7 @@ footer {
 .toggle-icon { color: var(--heading-color); transition: transform 0.3s ease; }
 .job-card.active .toggle-icon { transform: rotate(180deg); }
 
+/* Uitklapbare details */
 .job-details {
     display: block;
     overflow: hidden;
@@ -441,9 +446,9 @@ footer {
 .job-details ul { padding-left: 20px; margin: 0; }
 .job-details li { margin-bottom: 5px; }
 
-/* =========================
-   7. CERTIFICATEN
-   ========================= */
+/* ==========================================================================
+   7. CERTIFICATEN SECTIE
+   ========================================================================== */
 .cert-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
 .cert-item { 
@@ -463,6 +468,7 @@ footer {
     min-height: 80px; 
 }
 
+/* Jaartal weergave (Hover effect) */
 .cert-item::after {
     /* Standaard: Nederlands */
     content: attr(data-year-nl);
@@ -492,12 +498,11 @@ body.english-mode .cert-item::after {
     padding-bottom: 30px; 
 }
 
-/* Zorg ook dat de hover werkt */
 .cert-item:hover::after { opacity: 0.7; transform: translateY(0); }
 
-/* =========================
-   8. RESPONSIVE DESIGN
-   ========================= */
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (DESKTOP TWEAKS)
+   ========================================================================== */
 @media (max-width: 850px) {
     .split-timeline::before { display: none; }
     .timeline-row { flex-direction: column; }
@@ -514,35 +519,28 @@ body.english-mode .cert-item::after {
     .cert-list { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 }
 
-/* =========================
-   9. SCROLL ANIMATIES (GLOBAL FIX)
-   ========================= */
-
+/* ==========================================================================
+   9. SCROLL ANIMATIES & EFFECTEN
+   ========================================================================== */
 @keyframes fadeInUp {
     from { opacity: 0; filter: blur(2px); transform: translateY(50px); }
     to   { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 
-/* De Basis: Onzichtbaar */
+/* Basis status: Onzichtbaar */
 .hidden {
     opacity: 0;
     filter: blur(2px);
     transform: translateY(50px);
-    /* BELANGRIJK: We halen de transition weg. 
-       Dit zorgt ervoor dat als we de animatie resetten, hij direct terugspringt naar 'onsichtbaar'. */
 }
 
-/* De Actie: Invliegen */
+/* Actie status: Invliegen */
 .show {
     animation: fadeInUp 1s ease forwards;
 }
 
-/* --- Certificaten Specifiek --- */
-.cert-item.show {
-    transition: all 0.3s ease; 
-}
-
-/* Behoud vertragingen */
+/* Certificaten vertragingen (staggered effect) */
+.cert-item.show { transition: all 0.3s ease; }
 .cert-item:nth-child(2) { animation-delay: 0.1s; }
 .cert-item:nth-child(3) { animation-delay: 0.2s; }
 .cert-item:nth-child(4) { animation-delay: 0.3s; }
@@ -550,24 +548,20 @@ body.english-mode .cert-item::after {
 .cert-item:nth-child(6) { animation-delay: 0.5s; }
 .cert-item:nth-child(7) { animation-delay: 0.6s; }
 
-/* =========================
-   10. TAAL SLIDER (AANGEPAST VOOR SKILLS SECTIE)
-   ========================= */
-
+/* ==========================================================================
+   10. TAAL WISSELAAR
+   ========================================================================== */
 .language-section {
     margin-top: 5px;       
     padding-top: 0;        
     border-top: none;      
-    
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 12px;
-    
     padding-left: 2px; 
 }
 
-/* De tekst labels (NL / EN) */
 .lang-label {
     font-size: 0.85rem;
     font-weight: 600;
@@ -576,12 +570,11 @@ body.english-mode .cert-item::after {
     transition: opacity 0.3s;
 }
 
-/* Het label van de actieve taal maken we feller, de andere vager */
-.language-section:not(:has(input:checked)) .lang-label:first-child { opacity: 1; color: #fff; } /* NL is aan */
-.language-section:has(input:checked) .lang-label:last-child { opacity: 1; color: #fff; }       /* EN is aan */
+/* Highlight het actieve label */
+.language-section:not(:has(input:checked)) .lang-label:first-child { opacity: 1; color: #fff; } /* NL */
+.language-section:has(input:checked) .lang-label:last-child { opacity: 1; color: #fff; }       /* EN */
 
-
-/* --- De Switch Knop --- */
+/* Toggle Switch styling */
 .switch {
     position: relative;
     display: inline-block;
@@ -613,110 +606,57 @@ body.english-mode .cert-item::after {
 input:checked + .slider { background-color: var(--accent); }
 input:checked + .slider:before { transform: translateX(20px); }
 
-/* --- Wissel Mechanisme --- */
+/* Mechanisme voor tekst-wissel */
 .lang-en { display: none; }
 body.english-mode .lang-nl { display: none !important; }
 body.english-mode div.lang-en { display: block !important; }
 body.english-mode span.lang-en { display: inline !important; }
 
-/* =========================
-   11. VERTICALE RESPONSIVITEIT
-   ========================= */
+/* ==========================================================================
+   11. VERTICALE RESPONSIVITEIT (KLEINE HOOGTES)
+   ========================================================================== */
 
-/* --- STAP 1: Voor 1080p schermen (Tussenmaatje) --- */
+/* Voor 1080p schermen (Tussenmaat) */
 @media (max-height: 980px) {
-    .sidebar {
-        padding-top: 10px;
-        padding-bottom: 20px;
-    }
-
-    .profile-img {
-        width: 155px;
-        height: 155px;
-        margin-bottom: 15px;
-    }
-
+    .sidebar { padding-top: 10px; padding-bottom: 20px; }
+    .profile-img { width: 155px; height: 155px; margin-bottom: 15px; }
     .profile-header h1 { margin-bottom: 5px; }
     .role { margin-bottom: 10px; }
     .tagline { margin-bottom: 15px; }
-    
-    .contact-info { 
-        margin-bottom: 20px; 
-        gap: 6px;
-    }
-    
-    .skill-category { 
-        margin-top: 15px; 
-        margin-bottom: 6px; 
-    }
+    .contact-info { margin-bottom: 20px; gap: 6px; }
+    .skill-category { margin-top: 15px; margin-bottom: 6px; }
 }
 
-/* --- STAP 2: Voor Laptops & Kleine schermen --- */
+/* Voor Laptops & Kleine schermen */
 @media (max-height: 850px) {
-    
-    .sidebar {
-        padding: 15px 20px; 
-    }
-
-    .profile-img {
-        width: 150px;
-        height: 150px;
-        border-width: 4px;
-        margin-bottom: 8px;
-    }
-
-    .profile-header h1 { 
-        font-size: 1.6rem; 
-        margin-bottom: 2px; 
-    }
-    
-    .role { 
-        font-size: 0.85rem; 
-        margin-bottom: 5px; 
-    }
-    
-    .contact-info {
-        gap: 4px;
-        margin-bottom: 12px;
-    }
-    .contact-info .info-item {
-        padding: 6px 10px;
-        font-size: 0.85rem; 
-    }
-
-    .skill-category {
-        font-size: 0.85rem;
-        margin-top: 12px;
-    }
-    
-    .skill-tags > span {
-        padding: 4px 8px;
-        font-size: 0.8rem; 
-    }
-    
+    .sidebar { padding: 15px 20px; }
+    .profile-img { width: 150px; height: 150px; border-width: 4px; margin-bottom: 8px; }
+    .profile-header h1 { font-size: 1.6rem; margin-bottom: 2px; }
+    .role { font-size: 0.85rem; margin-bottom: 5px; }
+    .contact-info { gap: 4px; margin-bottom: 12px; }
+    .contact-info .info-item { padding: 6px 10px; font-size: 0.85rem; }
+    .skill-category { font-size: 0.85rem; margin-top: 12px; }
+    .skill-tags > span { padding: 4px 8px; font-size: 0.8rem; }
     .language-section { margin-top: 1px; }
 }
 
-/* =========================================
-   12. MOBIEL KNOPJE (STANDAARD VERBORGEN OP DESKTOP)
-   ========================================= */
+/* ==========================================================================
+   12. MOBIELE TOGGLE BUTTON
+   ========================================================================== */
+/* Standaard verborgen op desktop */
 .mobile-toggle-btn {
-    display: none; /* DIT ZORGT DAT HIJ WEG IS OP PC */
+    display: none; 
 }
 
-/* =========================================
-   2. MOBIEL DESIGN (Alles onder de 850px)
-   ========================================= */
+/* ==========================================================================
+   13. MOBIEL DESIGN (SCHERMEN KLEINER DAN 850PX)
+   ========================================================================== */
 @media (max-width: 850px) {
 
-    /* 1. Reset blauwe tik-kleur */
-    *{
-        -webkit-tap-highlight-color: transparent;
-    }
+    /* --- 13.1 Globale Resets & Scrollbars --- */
+    * { -webkit-tap-highlight-color: transparent; }
 
-    /* 2. NIEUW: VERBERG SCROLLBALKEN (Maar laat scrollen wel werken) */
-    
-    /* Voor Chrome, Safari & Opera (De meeste telefoons) */
+    /* Verberg scrollbalken (Chrome, Safari, Opera) */
     .sidebar::-webkit-scrollbar,
     .sidebar-extra::-webkit-scrollbar,
     body::-webkit-scrollbar,
@@ -724,111 +664,93 @@ body.english-mode span.lang-en { display: inline !important; }
         display: none;
     }
 
-    /* Voor Firefox, IE en Edge */
+    /* Verberg scrollbalken (Firefox, IE, Edge) */
     .sidebar, .sidebar-extra, body, html {
-        -ms-overflow-style: none;  /* IE en Edge */
-        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none;  
+        scrollbar-width: none;  
     }
 
-    /* --- 1. ALGEMENE STRUCTUUR & LAYOUT --- */
-    body {
-        flex-direction: column;
-    }
+    /* --- 13.2 Algemene Structuur --- */
+    body { flex-direction: column; }
 
     .main-content {
         margin-left: 0;
         width: 100%;
         padding: 20px 20px 20px 20px;
         
-        opacity: 0; /* Begin onzichtbaar */
-        /* De '0.2s' zorgt dat hij pas start nadat de sidebar al beweegt */
-        animation: fadeInUp 1s ease 0.2s forwards;
-        
+        opacity: 0; /* Animatie start onzichtbaar */
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1s forwards;
     }
 
     footer { 
         border-top: var(--border); 
         padding-top: 10px; 
-        padding-bottom: 0px; /* Iets meer ruimte onderaan zodat tekst niet tegen de rand plakt */
-        
+        padding-bottom: 0px; 
         color: var(--heading-color); 
         opacity: 0.6; 
         font-size: 0.9rem; 
         
         display: flex;
-        flex-direction: column-reverse; /* DE TRUC: Knop komt boven, Tekst gaat naar beneden */
-        align-items: center;            /* Alles netjes in het midden centreren */
-        gap: 10px;                      /* Ruimte tussen de knop en de tekst */
+        flex-direction: column-reverse; 
+        align-items: center;            
+        gap: 10px;                      
     }
 
-    /* --- 2. SIDEBAR CONTAINER (HET BLAUWE VLAK) --- */
+    /* --- 13.3 Sidebar Container (Het blauwe vlak) --- */
     .sidebar {
         position: relative;
         width: 100%;
         height: auto;
-        
-        /* Bottom padding is 0 zodat de knop de rand kan raken */
         padding: 15px 20px 0 20px; 
-        
         box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         
-        /* Flexbox aanzetten zodat we elementen naar beneden kunnen duwen */
         display: flex;
         flex-direction: column;
         background-color: var(--sidebar-bg);
     }
 
-    /* STAP 2: Hier plak je jouw nieuwe code (De inhoud beweegt wel) */
+    /* --- 13.4 Sidebar Animaties (Staggered effect) --- */
+    /* Beginstatus: alles onzichtbaar */
     .sidebar .profile-img,
-    .sidebar .profile-header,
+    .sidebar .profile-header-title,
     .sidebar .role,
     .sidebar .tagline,
-    .sidebar .mobile-socials,      /* Als je deze hebt toegevoegd */
+    .sidebar .mobile-socials,
     .sidebar .mobile-toggle-btn {
-        opacity: 0; /* Begin onzichtbaar */
-        /* De inhoud vliegt nu mooi over de stilstaande blauwe achtergrond */
-        animation: fadeInUp 1s ease 0.1s forwards;
+        opacity: 0;
     }
 
-    /* --- 3. SIDEBAR INHOUD (FOTO & TEKST) --- */
-    .profile-img {
-        width: 200px; 
-        height: 200px;
-        margin-bottom: 5px;
+    /* Volgorde van binnenkomst */
+    .sidebar .profile-img {
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+    }
+    .profile-header-title {
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+    }
+    .sidebar .role {
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+    }
+    .sidebar .tagline {
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+    }
+    .sidebar .mobile-toggle-btn {
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
     }
 
-    /* 1. DE NAAM (Tim Koops) */
-    .profile-header h1 { 
-        margin-bottom: 2px; 
-        font-size: 2rem;  /* <--- AANPASSEN: Was 1.5rem. Probeer 2rem of 2.2rem */
-    }
-    
-    /* 2. DE ROL (STUDENT IT EXPERT) */
-    .role { 
-        margin-bottom: 5px; 
-        font-size: 1rem;  /* <--- AANPASSEN: Was 0.8rem. Probeer 1rem */
-    }
-    
-    /* 3. DE SLOGAN (Pragmatisch & Klantgericht) */
-    .tagline { 
-        display: block; 
-        margin-bottom: 20px;
-        font-size: 0.95rem; /* <--- AANPASSEN: Was 0.8rem. Probeer 0.95rem */
-        opacity: 0.9;
-    }
+    /* --- 13.5 Sidebar Inhoud Styles --- */
+    .profile-img { width: 200px; height: 200px; margin-bottom: 5px; }
+    .profile-header h1 { margin-bottom: 2px; font-size: 2rem; }
+    .role { margin-bottom: 5px; font-size: 1rem; }
+    .tagline { display: block; margin-bottom: 20px; font-size: 0.95rem; opacity: 0.9; }
 
-    /* --- 4. DE CONTACT KNOP (ONDERIN) --- */
+    /* --- 13.6 Mobiele Toggle Knop --- */
     .mobile-toggle-btn {
         display: flex;
         flex-direction: column;
         align-items: center;
-        
-        /* Deze 'auto' duwt de knop automatisch helemaal naar de bodem */
         margin-top: auto; 
         margin-bottom: 0;
         width: 100%;
-        
-        /* Kleine ruimte zodat het pijltje niet de rand raakt */
         padding-bottom: 10px; 
         
         background: transparent;
@@ -848,16 +770,14 @@ body.english-mode span.lang-en { display: inline !important; }
         transition: transform 0.3s ease;
     }
 
-    .mobile-toggle-btn.active i {
-        transform: rotate(180deg);
-    }
+    .mobile-toggle-btn.active i { transform: rotate(180deg); }
     
-    /* --- 5. HET VERBORGEN MENU (EXTRA INFO) --- */
+    /* --- 13.7 Verborgen Menu (Extra Info) --- */
     .sidebar-extra {
         display: none; 
         margin-top: 10px;
         padding-top: 10px;
-        padding-bottom: 20px; /* Ruimte onderaan als hij open is */
+        padding-bottom: 20px; 
         border-top: 1px solid rgba(255,255,255,0.1); 
     }
     
@@ -866,15 +786,13 @@ body.english-mode span.lang-en { display: inline !important; }
         animation: fadeInUp 0.4s ease-out forwards;
     }
 
-    /* --- 6. DE TIJDLIJN (WERKERVARING) --- */
-    
-    /* Animatie status */
+    /* --- 13.8 Tijdlijn (Mobiele Aanpassingen) --- */
     .split-timeline.hidden { opacity: 0; filter: none; }
     .split-timeline.show { animation: fadeInUp 1s ease forwards; }
     .timeline-row { flex-direction: column-reverse; margin-bottom: 0; opacity: 0; }
     .timeline-row.show { animation: fadeInUp 1s ease forwards; }
 
-    /* De verticale lijn */
+    /* Verticale lijn */
     .split-timeline::before {
         display: block;
         left: 50%;
@@ -884,32 +802,25 @@ body.english-mode span.lang-en { display: inline !important; }
         z-index: 0;
     }
     
-    /* Centreren van de datum */
+    /* Datum centreren en lijn weghalen */
     .timeline-time { 
-        /* Reset de breedte en positie */
         width: auto;       
         min-width: 0;      
         max-width: none;   
         
-        /* NIEUW: We halen de lijn en de afstand links weg */
-        border-left: none;  /* Weg met het grijze streepje */
-        padding-left: 0;    /* Geen ruimte meer nodig voor de lijn */
-        margin-left: 0;     /* Strak links uitlijnen */
+        border-left: none;  
+        padding-left: 0;    
+        margin-left: 0;     
         
-        /* Zorg dat de datum netjes links boven de kaart staat */
         text-align: left;   
         flex: auto; 
         white-space: normal; 
         
-        /* Een beetje lucht tussen de datum en de gele kaart eronder */
         margin-bottom: 20px; 
-        padding-top: 20px; /* Ruimte tussen de vorige kaart en deze datum */
+        padding-top: 20px; 
     }
 
-    .split-timeline {
-        /* LENGTE VOOR MOBIEL */
-        padding-bottom: 45px; /* Hier wil je hem waarschijnlijk korter hebben */
-    }
+    .split-timeline { padding-bottom: 45px; }
 
     .date-badge {
         display: flex; 
@@ -930,7 +841,7 @@ body.english-mode span.lang-en { display: inline !important; }
         font-size: 0.85rem;
     }
 
-    /* Desktop-elementen verbergen */
+    /* Verberg desktop elementen */
     .timeline-time::after, 
     .timeline-row:first-child .timeline-time::after,
     .job-card::before, 
@@ -938,44 +849,38 @@ body.english-mode span.lang-en { display: inline !important; }
         display: none; 
     }
 
-    /* NIEUW: Dit zorgt voor strakke, gelijke witruimte tussen ALLE blokken op mobiel */
+    /* Gelijke witruimte tussen secties */
     .main-content > section {
-        margin-bottom: 0px; /* Pas dit getal aan om ze dichterbij of verder weg te zetten */
+        margin-bottom: 0px; 
     }
     
-    /* Zorg dat de allerlaatste sectie niet te veel ruimte heeft richting de footer */
     .main-content > section:last-of-type {
         margin-bottom: 35px;
     }
 
-    /* Content styling */
     .timeline-content { padding: 0; width: 100%; z-index: 1; }
     .job-card { margin: 0 auto; width: 100%; }
 }
 
-/* =========================
-   13. LEGAL PAGINA (NIEUW)
-   ========================= */
-
-/* Zorgt dat de achtergrondkleur goed blijft */
+/* ==========================================================================
+   14. LEGAL PAGINA
+   ========================================================================== */
 body.legal-page {
-    display: block; /* Reset de flexbox van de main body */
+    display: block; 
     background-color: var(--main-bg);
 }
 
-/* De container voor de tekst: gecentreerd en leesbaar */
 .legal-content {
     max-width: 800px;
-    margin: 0 auto;       /* Zet hem in het midden */
-    padding: 60px 20px;   /* Ruimte rondom */
+    margin: 0 auto;       
+    padding: 60px 20px;   
     padding-top: 60px;
     padding-bottom: 20px;
-    min-height: 100vh;    /* Zorg dat hij beeldvullend is */
+    min-height: 100vh;    
     display: flex;
     flex-direction: column;
 }
 
-/* De 'Terug' knop styling */
 .legal-back-btn {
     display: inline-flex;
     align-items: center;
@@ -992,23 +897,18 @@ body.legal-page {
     color: var(--accent);
 }
 
-/* Kopjes op deze pagina iets kleiner maken voor rust */
 .legal-content h3 {
     margin-top: 20px;
     margin-bottom: 10px;
     color: var(--heading-color);
 }
 
-/* Tekst leesbaarder maken */
 .legal-content p {
     line-height: 1.8;
     margin-bottom: 15px;
     color: var(--text-color);
 }
 
-/* Simpele footer op deze pagina */
 .legal-content footer {
-    margin-top: auto;     /* Duwt footer naar beneden */
+    margin-top: auto;     
 }
-
-
