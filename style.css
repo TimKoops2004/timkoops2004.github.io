@@ -787,6 +787,9 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 
     /* --- 13.8 Tijdlijn (Mobiele Aanpassingen) --- */
+    .cert-item:nth-child(n) {
+        animation-delay: 0s !important;
+    }
     .split-timeline.hidden { opacity: 0; filter: none; }
     .split-timeline.show { animation: fadeInUp 1s ease forwards; }
     .timeline-row { flex-direction: column-reverse; margin-bottom: 0; opacity: 0; }
