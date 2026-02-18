@@ -269,7 +269,7 @@ footer {
     text-decoration: none;      
     color: var(--heading-color); 
     font-weight: 400;
-    transition: color 0.3s ease;
+    transition: color 1s ease;
     display: flex;
     align-items: center;
     gap: 8px; 
@@ -280,6 +280,7 @@ footer {
 
 .back-to-top:hover {
     color: var(--accent); 
+    transition: color 0.3s ease;
 }
 
 /* --- Introductie Sectie --- */
@@ -689,14 +690,23 @@ body.english-mode span.lang-en { display: inline !important; }
         color: var(--heading-color); 
         opacity: 0.6; 
         font-size: 0.9rem; 
+        transition: color 1s ease;
         display: flex;
         flex-direction: column-reverse; 
         align-items: center;            
         gap: 10px;                      
     }
 
+    /* Op Mobiel: Als je tikt (active), wordt hij DIRECT geel */
+    .back-to-top:focus {
+    color: var(--heading-color);
+    }
+
+    /* 3. MOBIEL: Tijdens het indrukken DIRECT geel */
+    /* Omdat deze regel ONDER :focus staat, wint hij tijdens het drukken */
     .back-to-top:active {
-    color: var(--accent);
+        color: var(--accent);
+        transition: color 0s; /* Direct geel */
     }
 
     /* --- 13.3 Sidebar Container --- */
@@ -754,7 +764,7 @@ body.english-mode span.lang-en { display: inline !important; }
     }
 
     /* --- 13.5 Sidebar Inhoud Styles --- */
-    .profile-img { width: 140px; height: 140px; margin-bottom: 5px; } /* Iets kleiner gemaakt voor balans */
+    .profile-img { width: 200px; height: 200px; margin-bottom: 5px; }
     .profile-header h1 { margin-bottom: 2px; font-size: 1.8rem; }
     .role { margin-bottom: 5px; font-size: 1rem; }
     .tagline { display: block; margin-bottom: 15px; font-size: 0.95rem; opacity: 0.9; }
