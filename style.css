@@ -268,11 +268,14 @@ footer {
 .back-to-top {
     text-decoration: none;      
     color: var(--heading-color); 
-    font-weight: 0;
+    font-weight: 400;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px; 
+    /* Voorkom dat de knop een focus-kader krijgt op mobiel */
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .back-to-top:hover {
@@ -692,6 +695,10 @@ body.english-mode span.lang-en { display: inline !important; }
         gap: 10px;                      
     }
 
+    .back-to-top:active {
+    color: var(--accent);
+    }
+
     /* --- 13.3 Sidebar Container --- */
     .sidebar {
         position: relative;
@@ -843,7 +850,7 @@ body.english-mode span.lang-en { display: inline !important; }
         text-align: left;   
         flex: auto; 
         white-space: normal; 
-        margin-bottom: 20px; 
+        margin-bottom: 15px; 
         padding-top: 20px; 
     }
 
